@@ -52,7 +52,7 @@ export const Register = (props) => {
                 })
                 .then(res => {
                     localStorage.setItem("blue_token", res.token)
-                    props.history.push("/rare")
+                    props.history.push("/blue")
                 })
         } else {
             passwordDialog.current.showModal()

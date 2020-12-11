@@ -7,6 +7,7 @@ export const BrideProvider = (props) => {
     const [brides, setBrides] = useState([])
     const [currentBride, setCurrentBride] = useState({})
     const [loggedIn, setLoggedIn] = useState(false)
+    const [bride, setBride] = useState({})
 
     const getBrides = () => {
         return fetch("http://localhost:8000/brides", {
@@ -30,20 +31,20 @@ export const BrideProvider = (props) => {
             .then(setCurrentBride)
     }
 
-    // const getUserProfile = (userId) => {
-    //     return fetch(`http://localhost:8000/users/${userId}`, {
-    //         headers: {
-    //             "Authorization": `Token ${localStorage.getItem("rare_token")}`,
-    //             "Content-Type": "application/json"
-    //         }
-    //     })
-    //         .then(res => res.json())
-
-    // }
+    const getSingleBride = (brideId) => {
+        return fetch(`http://localhost:8000/brides/${brideId}`, {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("blue_token")}`,
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(setBride)
+    }
 
     return (
         <BrideContext.Provider value={{
-            brides, getBrides, currentBride, getCurrentBride, loggedIn, setLoggedIn
+            brides, getBrides, currentBride, getCurrentBride, loggedIn, setLoggedIn, getSingleBride, bride
         }}>
             {props.children}
         </BrideContext.Provider>
