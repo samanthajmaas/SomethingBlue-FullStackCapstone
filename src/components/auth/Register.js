@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react"
 import { Link } from "react-router-dom"
+import Logo from "./Blue_Logo.png"
 import "./Auth.css"
 
 export const Register = (props) => {
@@ -47,10 +48,11 @@ export const Register = (props) => {
                 body: JSON.stringify(newUser)
             })
                 .then(res => {
-                    return res.json()})
+                    return res.json()
+                })
                 .then(res => {
-                        localStorage.setItem("blue_token", res.token)
-                        props.history.push("/rare")
+                    localStorage.setItem("blue_token", res.token)
+                    props.history.push("/rare")
                 })
         } else {
             passwordDialog.current.showModal()
@@ -58,7 +60,8 @@ export const Register = (props) => {
     }
 
     return (
-        <main style={{ textAlign: "center" }}>
+        <main className="container--register" style={{ textAlign: "center" }}>
+            <img className="register-img" src={Logo}></img>
 
             <dialog className="dialog dialog--password" ref={passwordDialog}>
                 <div>Passwords do not match</div>
@@ -66,8 +69,10 @@ export const Register = (props) => {
             </dialog>
 
             <form className="form--login form--register" onSubmit={handleRegister}>
-                <h1 className="h3 mb-3 font-weight-normal">Something Blue</h1>
-                <img className="register-img" src="https://via.placeholder.com/200x125.png"></img>
+                <h1 className="h3 mb-3 font-weight-normal">Register an Account</h1>
+                <fieldset>
+                    <input className="register-input photoUpload" type="file" id="profile_image" onChange={(evt) => { createProfileImageJSON(evt) }} />
+                </fieldset>
                 <fieldset className="register-input">
                     <input ref={first_name} type="text" name="first_name" className="form-control" placeholder="First Name" required autoFocus />
                 </fieldset>
@@ -81,11 +86,6 @@ export const Register = (props) => {
                     <input ref={username} name="username" className="form-control" placeholder="Username" />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="profile_image_url"> Profile Image </label>
-                    <input className="register-input" type="file" id="profile_image" onChange={(evt) => {createProfileImageJSON(evt)}}/>
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="inputPassword"> Password </label>
                     <input ref={password} type="password" name="password" className="form-control" placeholder="Password" required />
                 </fieldset>
                 <fieldset className="register-input">
@@ -96,10 +96,11 @@ export const Register = (props) => {
                 }}>
                     <button className="btn login-button" type="submit">Register</button>
                 </fieldset>
+                <section className="link--register">
+                    Already registered? <Link to="/login">Login</Link>
+                </section>
             </form>
-            <section className="link--register">
-                Already registered? <Link to="/login">Login</Link>
-            </section>
+
         </main>
     )
 }

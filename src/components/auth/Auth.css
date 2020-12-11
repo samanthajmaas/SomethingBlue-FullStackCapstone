@@ -1,19 +1,44 @@
 .h1, h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
+    font-family: Merriweather;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 23px;
+    color: #9DC5D1;
+}
+
+.container--register{
+    background-image: url(./register.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position-x: right;
+    min-height: 100vh;
+}
+
+.container--login{
+    background-image: url(./login.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position-x: right;
+    min-height: 100vh;
 }
 
 fieldset {
     min-width: 0;
     padding: 1rem 0;
-    margin: 0;
-    margin-top: 40px;
+    margin-top: 10px;
     border: 0;
+}
+
+.photoUpload{
+    position: relative;
+    left: 3em;
 }
 
 .form--login {
     display: inline-block;
-    margin: 0 auto;
     text-align: center;
+    margin-top: 1rem;
 }
 
 .label--login {
@@ -22,7 +47,10 @@ fieldset {
 }
 
 .form-control::placeholder {
-    font-style: italic;
+    font-family: Merriweather;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.3rem;
 }
 
 .form-control {
@@ -33,28 +61,37 @@ fieldset {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
+    color: #9DC5D1;
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: .25rem;
-    -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-
-.container--login {
-    text-align: center;
-    overflow: hidden;
+    background: #FFFFFF;
+    mix-blend-mode: normal;
+    border-radius: 15px;
 }
 
 .form--login {
     z-index: 1;
-    min-height: 25rem;
-    min-width: 25rem;
+    min-height: 20rem;
+    min-width: 20rem;
     padding: 0 5rem;
-    background-color: hsla(0,0%,100%,0.75);
+    padding-top: 4rem;
+    background-color: transparent;
     background-blend-mode: overlay;
     background-repeat: no-repeat;
+    background: rgba(196, 196, 196, 0.15);
+    border-radius: 10px;
+}
+
+.login-img {
+    height: 15em;
+}
+
+.register-img {
+    height: 8em;
+    position: absolute;
+    left: 16px;
+    top: 12px;
 }
 
 .button--close {
@@ -68,17 +105,23 @@ fieldset {
 }
 
 .login-button {
-    width: 107%;
-    background-color: transparent;
-    border: solid purple 2px;
-    color: purple;
+    width: 25%;
+    background: rgba(255, 255, 255, 0.80);
+    border-radius: 15px;
+    font-family: Merriweather;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.3rem;
+    color: #9DC5D1;
+    border: none;
 }
 
 .login-button:hover {
-    background-color: purple;
+    background-color:#fff;
 }
 
 .link--register {
-    width: 102%;
+    width: 100%;
     text-align: center;
+    color: #fff;
 }

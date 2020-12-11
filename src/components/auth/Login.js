@@ -1,5 +1,6 @@
-import React, { useRef, useContext} from "react"
+import React, { useRef, useContext } from "react"
 import { Link } from "react-router-dom"
+import Logo from "./Blue_Logo.png"
 import { BrideContext } from "../brides/BrideProvider"
 import "./Auth.css"
 
@@ -8,7 +9,7 @@ export const Login = (props) => {
     const password = useRef(null)
     const invalidDialog = useRef(null)
 
-    const {setLoggedIn, getCurrentBride, currentBride } = useContext(BrideContext)
+    const { setLoggedIn } = useContext(BrideContext)
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -35,20 +36,21 @@ export const Login = (props) => {
                     invalidDialog.current.showModal();
                 }
             })
-        }
+    }
 
 
 
     return (
-        <main className="container--login">
+        <main className="container--login" style={{ textAlign: "center" }}>
+
             <dialog className="dialog dialog--auth" ref={invalidDialog}>
                 <div>Username or password was not valid.</div>
                 <button className="button--close" onClick={e => invalidDialog.current.close()}>Close</button>
             </dialog>
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>Something Blue</h1>
-                    <img className="login-img" src="https://via.placeholder.com/300x150.png"></img>
+                    <img className="login-img" src={Logo} alt="Logo"></img>
+                    <h1>Login</h1>
                     <fieldset>
                         <input
                             ref={username}
@@ -68,14 +70,15 @@ export const Login = (props) => {
                             required />
                     </fieldset>
                     <fieldset style={{
-                        textAlign:"center"
+                        textAlign: "center"
                     }}>
-                        <button className="btn login-button" type="submit">Login</button>
+                        <button className="btn login-button" type="submit">sign in</button>
                     </fieldset>
+                    <section className="link--register">
+                        <Link to="/register">Don't have an account?</Link>
+                    </section>
                 </form>
-            </section>
-            <section className="link--register">
-                <Link to="/register">Don't have an account yet? Click here to sign up!</Link>
+
             </section>
         </main>
     )
