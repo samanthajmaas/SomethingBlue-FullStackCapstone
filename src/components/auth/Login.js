@@ -78,8 +78,8 @@ export const Login = (props) => {
                         <Link to="/register">Don't have an account?</Link>
                     </section>
                 </form>
-
             </section>
+            <div className="loginText">Time to plan the wedding of your dreams</div>
         </main>
     )
 }

@@ -94,7 +94,7 @@ export const Register = (props) => {
                 <fieldset style={{
                     textAlign: "center"
                 }}>
-                    <button className="btn login-button" type="submit">Register</button>
+                    <button className="btn login-button" type="submit">start planning</button>
                 </fieldset>
                 <section className="link--register">
                     Already registered? <Link to="/login">Login</Link>
