@@ -22,8 +22,8 @@ export const EditWeddingForm = (props) => {
             .then(()=> {
                 props.setEditMode(false)
                 props.history.push("/")
+                window.location.reload()
             })
-
         }
 
     return (
@@ -39,7 +39,7 @@ export const EditWeddingForm = (props) => {
             <fieldset>
                 <div className="form-div">
                     <input type="date" name="event_date" className="form-control edit-wedding-input" id="event_date"
-                        // defaultValue={props.weddingToEdit.event_date}
+                        defaultValue={props.currentWedding.event_date}
                         onChange={handleControlledInputChange}>
                     </input>
                 </div>
@@ -48,6 +48,7 @@ export const EditWeddingForm = (props) => {
                 <div className="form-div">
                     <input type="text" name="location" className="form-control edit-wedding-input" id="location"
                         proptype="varchar"
+                        placeholder="Location of Wedding"
                         defaultValue={props.currentWedding.location}
                         onChange={handleControlledInputChange}>
                     </input>
@@ -57,6 +58,7 @@ export const EditWeddingForm = (props) => {
                 <div className="form-div">
                     <input type="text" name="budget" className="form-control edit-wedding-input" id="budget"
                         proptype="int"
+                        placeholder="Overall wedding budget"
                         defaultValue={props.currentWedding.budget}
                         onChange={handleControlledInputChange}>
                     </input>
@@ -74,7 +76,6 @@ export const EditWeddingForm = (props) => {
                 className="btn cancel"
                 onClick={e => {
                     e.preventDefault()
-                    // props.setWeddingToEdit({})
                 }}>
                     Cancel
             </button>
