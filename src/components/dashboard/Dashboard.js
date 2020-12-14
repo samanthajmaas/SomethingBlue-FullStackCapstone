@@ -1,15 +1,16 @@
-import React, {useEffect, useContext } from "react"
+import React, {useEffect, useContext, useState } from "react"
 import "./Dashboard.css"
 import { BrideContext } from "../brides/BrideProvider"
 import { Link } from "react-router-dom"
 import Logo from "./Dashboard_Logo.png"
 import { WeddingContext } from "../weddings/WeddingProvider"
+import { EditWeddingForm } from "../weddings/EditWeddingForm"
 
-
-
-export const Dashboard = () => {
+export const Dashboard = (props) => {
     const {currentBride, getCurrentBride, getSingleBride, bride} = useContext(BrideContext)
     const {currentWedding, getCurrentWedding} = useContext(WeddingContext)
+    // const {weddingToEdit, setWeddingToEdit} = useState({})
+    const [editMode, setEditMode] = useState(false)
 
     useEffect(()=>{
         getCurrentBride()
@@ -33,9 +34,29 @@ export const Dashboard = () => {
                 <img className="image" style={{height: "20em"}} alt="" src={bride.profile_image_url}/>
                 <br></br>
                 <div className="weddingDate">{currentWedding.event_date}</div>
-                <div className="weddingLocation">Location</div>
-                <Link>Update Event Details</Link>
+                <div className="weddingLocation">{currentWedding.location != null ?
+                    currentWedding.location : <span className="wedding-location" onClick={() => {
+                        setEditMode(true)
+                    }}>
+                        Add Location to Event
+                    </span>
+                }
+                </div>
+                <span className="updateEvent" onClick={() => {
+                        setEditMode(true)
+                    }}>
+                        Update Event Details
+                    </span>
             </div>
+            <div>
+                    {editMode
+                        ? <EditWeddingForm
+                            // setWeddingToEdit={setWeddingToEdit}
+                            currentWedding={currentWedding}
+                            setEditMode={setEditMode}
+                            {...props} />
+                        : null}
+                </div>
             <div className="left-side">
                 <Link>Wedding Checklist</Link>
                 <br></br>
