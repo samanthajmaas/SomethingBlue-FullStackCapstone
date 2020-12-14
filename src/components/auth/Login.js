@@ -30,7 +30,7 @@ export const Login = (props) => {
                 if ("valid" in res && res.valid && "token" in res) {
                     setLoggedIn(true)
                     localStorage.setItem("blue_token", res.token)
-                    props.history.push("/blue");
+                    props.history.push("/");
                 }
                 else {
                     invalidDialog.current.showModal();

@@ -1,11 +1,13 @@
-import React, { useRef, useState } from "react"
+import React, { useContext, useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import Logo from "./Blue_Logo.png"
 import "./Auth.css"
+import { WeddingContext } from "../weddings/WeddingProvider"
 
 export const Register = (props) => {
 
     const [profileImg, setProfileImg] = useState('')
+    const {addWedding} = useContext(WeddingContext)
 
     const first_name = useRef()
     const last_name = useRef()
@@ -14,6 +16,7 @@ export const Register = (props) => {
     const password = useRef()
     const verifyPassword = useRef()
     const passwordDialog = useRef()
+    const eventDate = useRef()
 
     const getBase64 = (file, callback) => {
         const reader = new FileReader();
@@ -38,6 +41,7 @@ export const Register = (props) => {
                 "profile_image_url": profileImg,
                 "email": email.current.value,
                 "password": password.current.value,
+                "event_date": eventDate.current.value
             }
             return fetch("http://localhost:8000/register", {
                 method: "POST",
@@ -52,7 +56,7 @@ export const Register = (props) => {
                 })
                 .then(res => {
                     localStorage.setItem("blue_token", res.token)
-                    props.history.push("/blue")
+                    props.history.push("/")
                 })
         } else {
             passwordDialog.current.showModal()
@@ -90,6 +94,9 @@ export const Register = (props) => {
                 </fieldset>
                 <fieldset className="register-input">
                     <input ref={verifyPassword} type="password" name="verifyPassword" className="form-control" placeholder="Verify password" required />
+                </fieldset>
+                <fieldset className="register-input">
+                    <input ref={eventDate} type="date" name="eventDate" className="form-control" required />
                 </fieldset>
                 <fieldset style={{
                     textAlign: "center"

@@ -5,6 +5,7 @@ import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
 import "./Blue.css"
 import { BrideProvider } from "./brides/BrideProvider"
+import { WeddingProvider } from "./weddings/WeddingProvider"
 
 
 export const Blue = () => (
@@ -30,7 +31,7 @@ export const Blue = () => (
 
         <Route path="/login" render={(props) => {
             if (localStorage.getItem("blue_token")) {
-                return <Redirect to="/blue" />
+                return <Redirect to="/" />
             } else {
                 return (
                 <>
@@ -41,16 +42,17 @@ export const Blue = () => (
                 )
             }
         }} />
-
-        <BrideProvider>
-            <Route path="/register" render={(props) => {
-                if (localStorage.getItem("blue_token")) {
-                    return <Redirect to="/blue" />
-                }
-                else {
-                    return <Register {...props}/>
-                }
-            }} />
-        </BrideProvider>
+        <WeddingProvider>
+            <BrideProvider>
+                <Route path="/register" render={(props) => {
+                    if (localStorage.getItem("blue_token")) {
+                        return <Redirect to="/" />
+                    }
+                    else {
+                        return <Register {...props}/>
+                    }
+                }} />
+            </BrideProvider>
+        </WeddingProvider>
     </>
 )

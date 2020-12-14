@@ -3,11 +3,10 @@ import React, { useState } from "react"
 export const WeddingContext = React.createContext()
 
 export const WeddingProvider = (props) => {
-    const [weddings, setWeddings] = useState([])
-    const [wedding, setCurrentWedding] = useState({rareuser:{}, category:{}})
+    const [currentWedding, setCurrentWedding] = useState({bride:{}})
 
-    const getSingleWedding = (id) => {
-        return fetch(`http://localhost:8000/weddings/${id}`, {
+    const getCurrentWedding = () => {
+        return fetch("http://localhost:8000/weddings/current_brides_wedding", {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("blue_token")}`,
                 "Content-Type": "application/json"
@@ -15,17 +14,6 @@ export const WeddingProvider = (props) => {
         })
             .then(res => res.json())
             .then(setCurrentWedding)
-    }
-
-    const getWeddings = () => {
-        return fetch("http://localhost:8000/weddings", {
-            headers: {
-                "Authorization": `Token ${localStorage.getItem("blue_token")}`,
-                "Content-Type": "application/json",
-            }
-        })
-        .then(res => res.json())
-        .then(setWeddings)
     }
 
     const addWedding = wedding => {
@@ -38,9 +26,6 @@ export const WeddingProvider = (props) => {
             body: JSON.stringify(wedding)
         })
             .then(res => res.json())
-            .then((res) => {
-                getWeddings()
-                return res.id})
     }
 
     const deleteWedding = weddingId => {
@@ -48,7 +33,6 @@ export const WeddingProvider = (props) => {
             method: "DELETE",
             headers: {"Authorization": `Token ${localStorage.getItem("blue_token")}`},
         })
-            .then(getWeddings)
     }
 
 
@@ -61,13 +45,11 @@ export const WeddingProvider = (props) => {
             },
             body: JSON.stringify(wedding)
         })
-            .then(getWeddings)
-
     }
 
     return (
         <WeddingContext.Provider value={{
-            weddings, wedding, getSingleWedding, getWeddings, updatedWedding, deleteWedding, addWedding
+            currentWedding, getCurrentWedding, updatedWedding, deleteWedding, addWedding
         }}>
             {props.children}
         </WeddingContext.Provider>
