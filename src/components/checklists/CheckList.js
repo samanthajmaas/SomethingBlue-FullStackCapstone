@@ -1,41 +1,30 @@
-import React from "react"
+import React, { useContext, useEffect } from "react"
+import { WeddingContext } from "../weddings/WeddingProvider"
+import {ChecklistItem} from "./ChecklistItem"
+import { ChecklistContext } from "./ChecklistProvider"
 
 export const Checklist = (props) => {
-    const { checklistItems, getChecklist } = useContext(CategoryContext)
-    
-    useEffect(() => {
-        getChecklist()
-    }, [])
+    const { checklistItems, getChecklistItems } = useContext(ChecklistContext)
 
-    // const [editMode, setEditMode] = useState(false)
-    // const [currentCategory, setCurrentCategory] = useState({})
+
+    useEffect(() => {
+        const weddingId = parseInt(props.match.params.weddingId)
+        getChecklistItems(weddingId)
+    }, [])
 
     return (
         <>
-            <div className="cat-list-cont">
-                <section className="categories">
-                <h2>Categories</h2>
-                    {categories.map(c => {
-                        return <Category
+            <div className="checklist-list-cont">
+                <section className="checklistitems">
+                <h2>Your Wedding Checklist</h2>
+                <div className="countdown"> "Insert countdown" Days Left!</div>
+                    {checklistItems.map(c => {
+                        return <ChecklistItem
                             key={c.id}
-                            category={c}
-                            setEditMode={setEditMode}
-                            setCurrentCategory={setCurrentCategory}
+                            item={c}
                             {...props} />
                     }).reverse()
                     }
-                </section>
-                <div>
-                    {editMode
-                        ? <EditCategoryForm
-                            setCurrentCategory={setCurrentCategory}
-                            currentCategory={currentCategory}
-                            setEditMode={setEditMode}
-                            {...props} />
-                        : null}
-                </div>
-                <section>
-                    <CategoryForm {...props} />
                 </section>
             </div>
         </>
