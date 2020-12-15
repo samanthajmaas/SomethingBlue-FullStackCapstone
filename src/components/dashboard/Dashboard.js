@@ -54,7 +54,7 @@ export const Dashboard = (props) => {
                             setEditMode={setEditMode}
                             {...props} />
                         : null}
-                </div>
+            </div>
             <div className="left-side">
                 <Link to={`/checklist/wedding/${currentWedding.id}`}> Wedding Checklist</Link>
                 <br></br>

@@ -14,7 +14,7 @@ export const ChecklistItem = (props) => {
                             props.setCurrentCategory(props.category)
                         }}>
                         </button> */}
-                        <button className="btn-small fa fa-trash" onClick={() => deleteChecklistItem(props.item.id)}>
+                        <button className="btn-small fa fa-trash" onClick={() => deleteChecklistItem(props.item)}>X
                         </button>
                         <div className="item-name">{props.item.checklist_item.toDo}</div>
                     </>

@@ -1,11 +1,16 @@
-import React, { useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
+import { WeddingContext } from "../weddings/WeddingProvider"
 
 export const ChecklistContext = React.createContext()
 
 export const ChecklistProvider = (props) => {
 
     const [checklistItems, setChecklistItems] = useState([])
+    const {currentWedding, getCurrentWedding} = useContext(WeddingContext)
 
+    useEffect(() => {
+        getCurrentWedding()
+    }, [])
 
     const getChecklistItems = (weddingId) => {
         return fetch(`http://localhost:8000/checklist?wedding=${weddingId}`, {
@@ -25,13 +30,26 @@ export const ChecklistProvider = (props) => {
                 "Authorization": `Token ${localStorage.getItem("blue_token")}`
             }
         })
-            .then(getChecklistItems)
+            .then(res => getChecklistItems(currentWedding.id))
+    }
+
+    const addToDo = (item) => {
+        return fetch("http://localhost:8000/checklist", {
+            method: "POST",
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("blue_token")}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(item)
+        })
+        .then(res => res.json())
+        .then(res => getChecklistItems(currentWedding.id))
     }
 
 
     return (
         <ChecklistContext.Provider value={{
-            checklistItems, getChecklistItems, deleteChecklistItem
+            checklistItems, getChecklistItems, deleteChecklistItem, addToDo
         }}>
             {props.children}
         </ChecklistContext.Provider>
