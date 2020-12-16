@@ -58,7 +58,7 @@ export const Dashboard = (props) => {
             <div className="left-side">
                 <Link to={`/checklist/wedding/${currentWedding.id}`}> Wedding Checklist</Link>
                 <br></br>
-                <Link>Bugeter</Link>
+                <Link to={`/budget/wedding/${currentWedding.id}`}>Bugeter</Link>
                 <br></br>
                 <Link>Guest List</Link>
                 <br></br>

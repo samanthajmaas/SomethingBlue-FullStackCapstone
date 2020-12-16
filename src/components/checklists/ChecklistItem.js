@@ -8,7 +8,6 @@ export const ChecklistItem = (props) => {
 
     const handleChange = (event) => {
         setChecked(event.target.checked)
-        console.log(props.item.id)
         markCompleted(props.item)
         props.func()
     }

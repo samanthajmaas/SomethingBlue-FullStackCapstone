@@ -1,6 +1,8 @@
 import React from "react"
 import {Route} from "react-router-dom"
 import { BrideProvider } from "./brides/BrideProvider"
+import { BudgetList } from "./budgets/BudgetList"
+import { BudgetProvider } from "./budgets/BudgetProvider"
 import { Checklist } from "./checklists/CheckList"
 import { ChecklistProvider } from "./checklists/ChecklistProvider"
 import { Dashboard } from "./dashboard/Dashboard"
@@ -24,6 +26,14 @@ export const ApplicationViews = (props) => {
                             props=> <Checklist {...props} />
                 }/>
             </ChecklistProvider>
+        </WeddingProvider>
+
+        <WeddingProvider>
+            <BudgetProvider>
+                <Route exact path="/budget/wedding/:weddingId(\d+)" render={
+                            props=> <BudgetList {...props} />
+                }/>
+            </BudgetProvider>
         </WeddingProvider>
 
         <Route exact path="/logout" render={
