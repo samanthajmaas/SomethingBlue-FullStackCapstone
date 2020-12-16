@@ -9,7 +9,6 @@ import { EditWeddingForm } from "../weddings/EditWeddingForm"
 export const Dashboard = (props) => {
     const {currentBride, getCurrentBride, getSingleBride, bride} = useContext(BrideContext)
     const {currentWedding, getCurrentWedding} = useContext(WeddingContext)
-    // const {weddingToEdit, setWeddingToEdit} = useState({})
     const [editMode, setEditMode] = useState(false)
 
     useEffect(()=>{
@@ -26,7 +25,7 @@ export const Dashboard = (props) => {
 
     return (
         <>
-        <img className="register-img" src={Logo}></img>
+        <img className="register-img" alt ="" src={Logo}></img>
         
         <div className="dashboard-container">
             <div className="right-side">
@@ -51,14 +50,13 @@ export const Dashboard = (props) => {
             <div>
                     {editMode
                         ? <EditWeddingForm
-                            // setWeddingToEdit={setWeddingToEdit}
                             currentWedding={currentWedding}
                             setEditMode={setEditMode}
                             {...props} />
                         : null}
-                </div>
+            </div>
             <div className="left-side">
-                <Link>Wedding Checklist</Link>
+                <Link to={`/checklist/wedding/${currentWedding.id}`}> Wedding Checklist</Link>
                 <br></br>
                 <Link>Bugeter</Link>
                 <br></br>

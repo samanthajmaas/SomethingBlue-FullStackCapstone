@@ -1,13 +1,11 @@
-import React, { useContext, useRef, useState } from "react"
+import React, {useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import Logo from "./Blue_Logo.png"
 import "./Auth.css"
-import { WeddingContext } from "../weddings/WeddingProvider"
 
 export const Register = (props) => {
 
     const [profileImg, setProfileImg] = useState('')
-    const {addWedding} = useContext(WeddingContext)
 
     const first_name = useRef()
     const last_name = useRef()
@@ -65,7 +63,7 @@ export const Register = (props) => {
 
     return (
         <main className="container--register" style={{ textAlign: "center" }}>
-            <img className="register-img" src={Logo}></img>
+            <img className="register-img" alt="" src={Logo}></img>
 
             <dialog className="dialog dialog--password" ref={passwordDialog}>
                 <div>Passwords do not match</div>
