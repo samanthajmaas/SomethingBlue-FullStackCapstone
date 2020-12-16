@@ -1,22 +1,46 @@
-import React, { useContext } from "react"
+import React, { useContext} from "react"
 import { ChecklistContext } from "./ChecklistProvider"
+import Checkbox from '@material-ui/core/Checkbox'
 
 export const ChecklistItem = (props) => {
+    const {deleteChecklistItem, markCompleted} = useContext(ChecklistContext)
+    const [checked, setChecked] = React.useState(false);
 
-    const {deleteChecklistItem} = useContext(ChecklistContext)
+    const handleChange = (event) => {
+        setChecked(event.target.checked)
+        console.log(props.item.id)
+        markCompleted(props.item)
+        props.func()
+    }
 
     return (
         <>
             <section className="checklistItem">
                     <>
-                        {/* <button className="btn-small fa fa-edit" onClick={() => {
-                            props.setEditMode(true)
-                            props.setCurrentCategory(props.category)
-                        }}>
-                        </button> */}
+                    {
+                        props.editMode ? 
+                    
                         <button className="btn-small fa fa-trash" onClick={() => deleteChecklistItem(props.item)}>X
-                        </button>
-                        <div className="item-name">{props.item.checklist_item.toDo}</div>
+                        </button> :
+                        null
+                    }
+                        <div>
+                            {
+                                props.item.completed_date != null  ?
+                                <>
+                                <div className="item-name" style={{textDecorationLine: 'line-through'}}>{props.item.checklist_item.toDo}</div>
+                                <div className="completed">{props.item.completed_date}</div>
+                                </> :
+                                <>
+                                <div className="item-name">{props.item.checklist_item.toDo}</div>
+                                <Checkbox
+                                    checked={checked}
+                                    onChange={handleChange}
+                                    inputProps={{ 'aria-label': 'primary checkbox' }}
+                                />
+                                </>
+                            }
+                        </div>
                     </>
             </section>
         </>

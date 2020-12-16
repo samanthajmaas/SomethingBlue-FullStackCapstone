@@ -46,10 +46,22 @@ export const ChecklistProvider = (props) => {
         .then(res => getChecklistItems(currentWedding.id))
     }
 
+    const markCompleted = (item) => {
+        return fetch(`http://localhost:8000/checklist/${ item.id }/complete`, {
+            method: "PUT",
+            headers:{
+                "Authorization": `Token ${localStorage.getItem("blue_token")}`
+            },
+            body: JSON.stringify(item)
+        })
+            // .then(response => response.json())
+            .then(getChecklistItems(currentWedding.id))
+    }
+
 
     return (
         <ChecklistContext.Provider value={{
-            checklistItems, getChecklistItems, deleteChecklistItem, addToDo
+            checklistItems, getChecklistItems, deleteChecklistItem, addToDo, markCompleted
         }}>
             {props.children}
         </ChecklistContext.Provider>
