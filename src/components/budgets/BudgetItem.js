@@ -42,6 +42,7 @@ export const BudgetItem = (props) => {
                             <div className="form-div">
                                 <input type="text" name="estimated_cost" className="form-control estimated_cost" id="estimated_cost"
                                     defaultValue={props.item.estimated_cost}
+                                    placeholder="estimated cost"
                                     onChange={handleControlledInputChange}
                                     onKeyPress={handleKeypress}>
                                 </input>
@@ -51,6 +52,7 @@ export const BudgetItem = (props) => {
                             <div className="form-div">
                                 <input type="text" name="actual_cost" className="form-control actual_cost" id="actual_cost"
                                     defaultValue={props.item.actual_cost}
+                                    placeholder="actual cost"
                                     onChange={handleControlledInputChange}
                                     onKeyPress={handleKeypress}>
                                 </input>

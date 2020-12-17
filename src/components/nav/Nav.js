@@ -1,60 +1,58 @@
-import React from "react"
+import React, { useContext, useEffect, useState } from "react"
+import { Link } from "react-router-dom"
+
+import { BrideContext } from "../brides/BrideProvider"
 import "./Nav.css"
 
-
 export const Nav = (props) => {
+    const { currentBride, getCurrentBride, getSingleBride, bride } = useContext(BrideContext)
+   
+
+    useEffect(() => {
+        getCurrentBride()
+    }, [])
+
+    useEffect(() => {
+        getSingleBride(currentBride.id)
+    }, [currentBride])
     return (
         <>
-        <div className="nav">
-            <div className="nav__inner">
-                <div className="spacer__nav--left"></div>
-                <div className="link logo-wrapper left">
+            <div className="nav">
+                <Link
+                    className="btn nav__btn"
+                    onClick={() => props.history.push("/checklist")}>
+                    Checklist
+                            </Link>
+                <Link
+                    title="Review My Posts"
+                    className="btn nav__btn"
+                    onClick={() => props.history.push(`/budget`)}>
+                    Budgeter
+                            </Link>
 
-                </div>
-                <div className="link user-nav-wrapper right">
-                    <div className="top-space"></div>
-                    <div className="link wrapper__nav--right">
-                        <div className="nav__link-wrapper">
-                            <button
-                            className="btn nav__btn"
-                            onClick={()=>props.history.push("/checklist")}>
-                                Checklist
-                            </button><>
-                            <button
-                            title="Review My Posts"
-                            className="btn nav__btn"
-                            onClick={()=>props.history.push(`/budget`)}>
-                                Budget
-                            </button>
+                <Link
+                    className="btn nav__btn guests"
+                    onClick={() => props.history.push("/guests")}>
+                    Guest List
+                            </Link>
 
-                            <button
-                            className="btn nav__btn guests"
-                            onClick={()=>props.history.push("/guests")}>
-                                Guest List
-                            </button>
-
-                            <button
-                            className="btn nav__btn user-manager"
-                            onClick={()=>props.history.push(`/users`)}>
-                                Vision Board
-                            </button> 
-</>
-                            <button
-                            className="btn nav__btn login"
-                            onClick={() => {
-                    
-                                    props.history.push("/login")
-
-                            }}>
-                                Logout
-                            </button>
-                        </div>
-                    </div>
-                    <div className="bottom-space"></div>
-                </div>
-                <div className="spacer__nav--right"></div>
+                <Link
+                    className="btn nav__btn user-manager"
+                    onClick={() => props.history.push(`/visionboard`)}>
+                    Vision Board
+                            </Link>
+                <Link
+                    className="btn nav__btn"
+                    onClick={() => {
+                        localStorage.removeItem("blue_token")
+                        props.history.push("/login")
+                    }}>
+                    Logout
+                </Link>
             </div>
-        </div>
+            <div className="right-nav">
+                <img className="image" style={{ height: "5em" }} alt="" src={bride.profile_image_url} />
+            </div>
         </>
     )
 }

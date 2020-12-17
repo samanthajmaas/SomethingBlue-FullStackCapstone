@@ -28,7 +28,7 @@ export const ChecklistItem = (props) => {
                                 props.item.completed_date != null  ?
                                 <>
                                 <div className="item-name" style={{textDecorationLine: 'line-through'}}>{props.item.checklist_item.toDo}</div>
-                                <div className="completed">{props.item.completed_date}</div>
+                                <div className="completed">Completed on: {props.item.completed_date}</div>
                                 </> :
                                 <>
                                 <div className="item-name">{props.item.checklist_item.toDo}</div>

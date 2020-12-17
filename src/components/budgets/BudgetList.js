@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react"
 import { BudgetItem } from "./BudgetItem"
 import { BudgetContext } from "./BudgetProvider"
 import { AddNewSaveFor } from "./NewBudgetItemForm"
+import "./Budget.css"
 
 export const BudgetList = (props) => {
     const { budgetItems, getBudgetItems } = useContext(BudgetContext)

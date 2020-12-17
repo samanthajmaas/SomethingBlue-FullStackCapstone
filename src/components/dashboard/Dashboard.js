@@ -52,7 +52,7 @@ export const Dashboard = (props) => {
                             {...props} />
                         : null}
             </div>
-            <div className="left-side">
+            {/* <div className="left-side">
                 <Link to="/checklist"> Wedding Checklist</Link>
                 <br></br>
                 <Link to="/budget">Bugeter</Link>
@@ -65,7 +65,7 @@ export const Dashboard = (props) => {
                     localStorage.removeItem("blue_token")
                     props.history.push("/login")}}
                     >Logout</Link>
-            </div>
+            </div> */}
         </div>
         </>
     )

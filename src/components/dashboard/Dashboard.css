@@ -13,3 +13,10 @@
     margin-top: 10em;
 }
 
+.wedding-location{
+    cursor: pointer;
+}
+
+.updateEvent{
+    cursor: pointer;
+}

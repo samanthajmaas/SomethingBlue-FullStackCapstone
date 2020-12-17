@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react"
 import { VBImage } from "./Image"
 import { NewImageForm } from "./NewImageForm"
 import { VisionBoardContext } from "./VisionBoardProvider"
+import "./VisionBoard.css"
+
 
 export const VisionBoard = (props) => {
     const { images, getImages } = useContext(VisionBoardContext)

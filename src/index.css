@@ -1,8 +1,8 @@
-@import url("https://fonts.googleapis.com/css?family=Comfortaa|Patua+One");
+@import url('https://fonts.googleapis.com/css2?family=Allura&family=Merriweather:wght@300&display=swap');
 
 body, button, input, select, textarea {
     color: #404040;
-    font-family: "Comfortaa", Arial, sans-serif;
+    font-family: 'Merriweather', serif;
     font-size: 1rem;
     line-height: 1.5;
     padding: 0;
@@ -17,22 +17,4 @@ h1, h2, h3, h4, h5, h6 {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-
-.fakeLink {
-    color: -webkit-link;
-    cursor: pointer;
-    text-decoration: underline;
-    background: none!important;
-    border: none;
-    cursor: pointer;
-}
-
-.fakeLink:hover {
-    font-weight: bold;
-}
-
-.nav-item {
-    list-style-type: none;
 }

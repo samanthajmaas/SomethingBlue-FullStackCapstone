@@ -22,7 +22,7 @@ export const ApplicationViews = (props) => {
                         onClick={()=>{
                         props.history.push("/dashboard")}}
                         src={Logo} />
-        {/* <Nav {...props}/> */}
+        <Nav {...props}/>
         <BrideProvider>
             <WeddingProvider>
                 <Route exact path="/dashboard" render={
