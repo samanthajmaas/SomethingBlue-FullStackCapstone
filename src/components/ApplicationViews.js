@@ -18,7 +18,7 @@ export const ApplicationViews = (props) => {
 
         <BrideProvider>
             <WeddingProvider>
-                <Route exact path="/" render={
+                <Route exact path="/dashboard" render={
                     props=> <Dashboard {...props} />
                 } />
             </WeddingProvider>
@@ -55,12 +55,12 @@ export const ApplicationViews = (props) => {
         </GuestProvider>
 
 
-        <Route exact path="/logout" render={
+        {/* <Route exact path="/logout" render={
                 (props) => {
                     localStorage.removeItem("blue_user")
                     props.history.push("/login")
                 }
-            } />
+            } /> */}
         </>
     )
 }
