@@ -6,6 +6,8 @@ import { BudgetProvider } from "./budgets/BudgetProvider"
 import { Checklist } from "./checklists/CheckList"
 import { ChecklistProvider } from "./checklists/ChecklistProvider"
 import { Dashboard } from "./dashboard/Dashboard"
+import { GuestList } from "./guestlists/GuestList"
+import { GuestProvider } from "./guestlists/GuestProvider"
 import { VisionBoard } from "./visionboards/VisionBoard"
 import { VisionBoardProvider } from "./visionboards/VisionBoardProvider"
 import { WeddingProvider } from "./weddings/WeddingProvider"
@@ -45,6 +47,13 @@ export const ApplicationViews = (props) => {
                 }/>
             </VisionBoardProvider>
         </WeddingProvider>
+
+        <GuestProvider>
+            <Route exact path="/guests" render={
+                        props=> <GuestList {...props} />
+            }/>
+        </GuestProvider>
+
 
         <Route exact path="/logout" render={
                 (props) => {
