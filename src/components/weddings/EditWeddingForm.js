@@ -31,9 +31,6 @@ export const EditWeddingForm = (props) => {
         <form className="form change_Wedding_form" id="editWeddingForm">
             <div className="toprow">
                 <div className="toprowblank"></div>
-                <span className="x" onClick={()=>{
-                    props.setEditMode(false)
-                }}>X</span>
             </div>
             <h2 className="WeddingForm_label">Edit Wedding Details</h2>
             <fieldset>
@@ -76,6 +73,7 @@ export const EditWeddingForm = (props) => {
                 className="btn cancel"
                 onClick={e => {
                     e.preventDefault()
+                    props.setEditMode(false)
                 }}>
                     Cancel
             </button>

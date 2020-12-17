@@ -1,19 +1,12 @@
 import React, { useContext, useEffect, useState } from "react"
-import { WeddingContext } from "../weddings/WeddingProvider"
 
 export const VisionBoardContext = React.createContext()
 
 export const VisionBoardProvider = (props) => {
-
     const [images, setImages] = useState([])
-    const {currentWedding, getCurrentWedding} = useContext(WeddingContext)
 
-    useEffect(() => {
-        getCurrentWedding()
-    }, [])
-
-    const getImages = (weddingId) => {
-        return fetch(`http://localhost:8000/visionboard?wedding=${weddingId}`, {
+    const getImages = () => {
+        return fetch(`http://localhost:8000/visionboard`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("blue_token")}`,
                 "Content-Type": "application/json"
@@ -30,7 +23,7 @@ export const VisionBoardProvider = (props) => {
                 "Authorization": `Token ${localStorage.getItem("blue_token")}`
             }
         })
-            .then(res => getImages(currentWedding.id))
+            .then(getImages)
     }
 
     const addImage = (image) => {
@@ -43,7 +36,7 @@ export const VisionBoardProvider = (props) => {
             body: JSON.stringify(image)
         })
         .then(res => res.json())
-        .then(res => getImages(currentWedding.id))
+        .then(getImages)
     }
 
     return (

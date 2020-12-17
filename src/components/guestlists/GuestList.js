@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react"
 import { Guest } from "./Guest"
 import { GuestContext } from "./GuestProvider"
 import { NewGuestForm } from "./NewGuestForm"
+import "./Guest.css"
 
 export const GuestList = (props) => {
     const { guests, getGuests } = useContext(GuestContext)
