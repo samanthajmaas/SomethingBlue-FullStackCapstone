@@ -62,7 +62,7 @@ export const Dashboard = (props) => {
                 <br></br>
                 <Link>Guest List</Link>
                 <br></br>
-                <Link>Vision Board</Link>
+                <Link to={`/visionboard/wedding/${currentWedding.id}`}>Vision Board</Link>
                 <br></br>
                 <Link className="logout" to="/logout">Logout</Link>
             </div>

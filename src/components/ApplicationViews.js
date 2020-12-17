@@ -6,6 +6,8 @@ import { BudgetProvider } from "./budgets/BudgetProvider"
 import { Checklist } from "./checklists/CheckList"
 import { ChecklistProvider } from "./checklists/ChecklistProvider"
 import { Dashboard } from "./dashboard/Dashboard"
+import { VisionBoard } from "./visionboards/VisionBoard"
+import { VisionBoardProvider } from "./visionboards/VisionBoardProvider"
 import { WeddingProvider } from "./weddings/WeddingProvider"
 
 export const ApplicationViews = (props) => {
@@ -34,6 +36,14 @@ export const ApplicationViews = (props) => {
                             props=> <BudgetList {...props} />
                 }/>
             </BudgetProvider>
+        </WeddingProvider>
+
+        <WeddingProvider>
+            <VisionBoardProvider>
+                <Route exact path="/visionboard/wedding/:weddingId(\d+)" render={
+                            props=> <VisionBoard {...props} />
+                }/>
+            </VisionBoardProvider>
         </WeddingProvider>
 
         <Route exact path="/logout" render={
