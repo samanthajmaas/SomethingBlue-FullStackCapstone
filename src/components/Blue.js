@@ -31,7 +31,7 @@ export const Blue = () => (
 
         <Route path="/login" render={(props) => {
             if (localStorage.getItem("blue_token")) {
-                return <Redirect to="/" />
+                return <Redirect to="/dashboard" />
             } else {
                 return (
                 <>
@@ -46,7 +46,7 @@ export const Blue = () => (
             <BrideProvider>
                 <Route path="/register" render={(props) => {
                     if (localStorage.getItem("blue_token")) {
-                        return <Redirect to="/" />
+                        return <Redirect to="/dashboard" />
                     }
                     else {
                         return <Register {...props}/>

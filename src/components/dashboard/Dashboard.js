@@ -60,11 +60,14 @@ export const Dashboard = (props) => {
                 <br></br>
                 <Link to={`/budget/wedding/${currentWedding.id}`}>Bugeter</Link>
                 <br></br>
-                <Link>Guest List</Link>
+                <Link to="/guests">Guest List</Link>
                 <br></br>
                 <Link to={`/visionboard/wedding/${currentWedding.id}`}>Vision Board</Link>
                 <br></br>
-                <Link className="logout" to="/logout">Logout</Link>
+                <Link className="logout" onClick={() => {
+                    localStorage.removeItem("blue_token")
+                    props.history.push("/login")}}
+                    >Logout</Link>
             </div>
         </div>
         </>

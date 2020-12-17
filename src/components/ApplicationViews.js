@@ -6,6 +6,8 @@ import { BudgetProvider } from "./budgets/BudgetProvider"
 import { Checklist } from "./checklists/CheckList"
 import { ChecklistProvider } from "./checklists/ChecklistProvider"
 import { Dashboard } from "./dashboard/Dashboard"
+import { GuestList } from "./guestlists/GuestList"
+import { GuestProvider } from "./guestlists/GuestProvider"
 import { VisionBoard } from "./visionboards/VisionBoard"
 import { VisionBoardProvider } from "./visionboards/VisionBoardProvider"
 import { WeddingProvider } from "./weddings/WeddingProvider"
@@ -16,7 +18,7 @@ export const ApplicationViews = (props) => {
 
         <BrideProvider>
             <WeddingProvider>
-                <Route exact path="/" render={
+                <Route exact path="/dashboard" render={
                     props=> <Dashboard {...props} />
                 } />
             </WeddingProvider>
@@ -46,12 +48,19 @@ export const ApplicationViews = (props) => {
             </VisionBoardProvider>
         </WeddingProvider>
 
-        <Route exact path="/logout" render={
+        <GuestProvider>
+            <Route exact path="/guests" render={
+                        props=> <GuestList {...props} />
+            }/>
+        </GuestProvider>
+
+
+        {/* <Route exact path="/logout" render={
                 (props) => {
                     localStorage.removeItem("blue_user")
                     props.history.push("/login")
                 }
-            } />
+            } /> */}
         </>
     )
 }

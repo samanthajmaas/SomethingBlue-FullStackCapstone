@@ -1,16 +1,17 @@
 import React, {useContext, useState } from "react"
 import { GuestContext } from "./GuestProvider"
 
-export const  NewGuestForm= (props) => {
-    const {addGuest} = useContext(GuestContext)
+export const  EditGuestForm= (props) => {
+    const { updateGuest } = useContext(GuestContext)
 
     const [guest, setGuest] = useState({
-        guest_first_name: "",
-        guest_last_name:"",
-        address:"",
-        phone_number:"",
-        number_of_guests_in_party: 1,
-        rsvp_status:""
+        id:props.guest.id,
+        guest_first_name: props.guest.guest_first_name,
+        guest_last_name: props.guest.guest_last_name,
+        address: props.guest.address,
+        phone_number:props.guest.phone_number,
+        number_of_guests_in_party: props.guest.number_of_guests_in_party,
+        rsvp_status: props.guest.rsvp_status
     })
 
     const handleControlledInputChange = (e) => {
@@ -20,8 +21,8 @@ export const  NewGuestForm= (props) => {
     }
 
     const constructNewGuest = () => {
-        addGuest(guest)
-            .then(() => props.setAddMode(false))
+        updateGuest(guest)
+            .then(() => props.setEditMode(false))
     }
 
     return (
@@ -29,10 +30,10 @@ export const  NewGuestForm= (props) => {
             <div className="toprow">
                 <div className="toprowblank"></div>
                 <span className="x" onClick={()=>{
-                    props.setAddMode(false)
+                    props.setEditMode(false)
                 }}>X</span>
             </div>
-            <h2 className="newGuestForm_label">add new guest</h2>
+            <h2 className="newGuestForm_label">edit guest</h2>
             <fieldset>
                 <div className="form-div">
                     <input type="text" name="guest_first_name" className="form-control firstname-input" id="first_name"

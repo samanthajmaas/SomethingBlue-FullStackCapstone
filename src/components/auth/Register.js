@@ -54,7 +54,7 @@ export const Register = (props) => {
                 })
                 .then(res => {
                     localStorage.setItem("blue_token", res.token)
-                    props.history.push("/")
+                    props.history.push("/dashboard")
                 })
         } else {
             passwordDialog.current.showModal()
