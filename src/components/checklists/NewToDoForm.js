@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState } from "react"
+import React, {useContext, useState } from "react"
 import { ChecklistContext } from "./ChecklistProvider"
 
 export const  AddNewToDo= (props) => {
@@ -27,7 +27,7 @@ export const  AddNewToDo= (props) => {
                     props.setAddMode(false)
                 }}>X</span>
             </div>
-            <h2 className="todoForm_label">Add a new To Do</h2>
+            <h2 className="todoForm_label">add new to do</h2>
             <fieldset>
                 <div className="form-div">
                     <input type="text" name="toDo" className="form-control toDo-input" id="toDo"
@@ -42,7 +42,7 @@ export const  AddNewToDo= (props) => {
                     constructNewToDo()
                 }}
                 className="btn post_submit_btn">
-                Save To Do
+                save
             </button>
 
         </form>

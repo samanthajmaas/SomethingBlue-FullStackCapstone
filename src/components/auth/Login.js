@@ -45,7 +45,7 @@ export const Login = (props) => {
 
             <dialog className="dialog dialog--auth" ref={invalidDialog}>
                 <div>Username or password was not valid.</div>
-                <button className="button--close" onClick={e => invalidDialog.current.close()}>Close</button>
+                <button className="button--close" onClick={e => invalidDialog.current.close()}>close</button>
             </dialog>
             <section>
                 <form className="form--login" onSubmit={handleLogin}>

@@ -67,7 +67,7 @@ export const Register = (props) => {
 
             <dialog className="dialog dialog--password" ref={passwordDialog}>
                 <div>Passwords do not match</div>
-                <button className="button--close" onClick={e => passwordDialog.current.close()}>Close</button>
+                <button className="button--close" onClick={e => passwordDialog.current.close()}>close</button>
             </dialog>
 
             <form className="form--login form--register" onSubmit={handleRegister}>
@@ -94,6 +94,7 @@ export const Register = (props) => {
                     <input ref={verifyPassword} type="password" name="verifyPassword" className="form-control" placeholder="Verify password" required />
                 </fieldset>
                 <fieldset className="register-input">
+                    <label for="eventDate">Date of Wedding Event</label>
                     <input ref={eventDate} type="date" name="eventDate" className="form-control" required />
                 </fieldset>
                 <fieldset style={{
@@ -102,7 +103,7 @@ export const Register = (props) => {
                     <button className="btn login-button" type="submit">start planning</button>
                 </fieldset>
                 <section className="link--register">
-                    Already registered? <Link to="/login">Login</Link>
+                    Already registered? <Link to="/login">login</Link>
                 </section>
             </form>
 

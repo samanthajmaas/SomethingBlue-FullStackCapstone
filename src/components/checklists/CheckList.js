@@ -23,16 +23,16 @@ export const Checklist = (props) => {
                 <div className="countdown"> "Insert countdown" Days Left!</div>
                     <button className="addItem" onClick={() => {
                         setAddMode(true)
-                    }}>Add To Do</button>
+                    }}>add to do</button>
                 <div>
                     {
                         editMode == true ?
                         <button className="editList" onClick={() => {
                             setEditMode(false)
-                        }}>Cancel</button> :
+                        }}>cancel</button> :
                         <button className="editList" onClick={() => {
                             setEditMode(true)
-                        }}>Edit List</button>
+                        }}>edit list</button>
                     }
                 </div>
                 <div>

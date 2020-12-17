@@ -1,19 +1,14 @@
-import React, { useContext, useEffect, useState } from "react"
-import { WeddingContext } from "../weddings/WeddingProvider"
+import React, {useState } from "react"
 
 export const ChecklistContext = React.createContext()
 
 export const ChecklistProvider = (props) => {
 
     const [checklistItems, setChecklistItems] = useState([])
-    const {currentWedding, getCurrentWedding} = useContext(WeddingContext)
 
-    useEffect(() => {
-        getCurrentWedding()
-    }, [])
 
-    const getChecklistItems = (weddingId) => {
-        return fetch(`http://localhost:8000/checklist?wedding=${weddingId}`, {
+    const getChecklistItems = () => {
+        return fetch(`http://localhost:8000/checklist`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("blue_token")}`,
                 "Content-Type": "application/json"
@@ -30,7 +25,7 @@ export const ChecklistProvider = (props) => {
                 "Authorization": `Token ${localStorage.getItem("blue_token")}`
             }
         })
-            .then(res => getChecklistItems(currentWedding.id))
+            .then(getChecklistItems)
     }
 
     const addToDo = (item) => {
@@ -43,7 +38,7 @@ export const ChecklistProvider = (props) => {
             body: JSON.stringify(item)
         })
         .then(res => res.json())
-        .then(res => getChecklistItems(currentWedding.id))
+        .then(getChecklistItems)
     }
 
     const markCompleted = (item) => {
@@ -54,8 +49,7 @@ export const ChecklistProvider = (props) => {
             },
             body: JSON.stringify(item)
         })
-            // .then(response => response.json())
-            .then(getChecklistItems(currentWedding.id))
+            .then(getChecklistItems)
     }
 
 

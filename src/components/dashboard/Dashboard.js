@@ -2,7 +2,6 @@ import React, {useEffect, useContext, useState } from "react"
 import "./Dashboard.css"
 import { BrideContext } from "../brides/BrideProvider"
 import { Link } from "react-router-dom"
-import Logo from "./Dashboard_Logo.png"
 import { WeddingContext } from "../weddings/WeddingProvider"
 import { EditWeddingForm } from "../weddings/EditWeddingForm"
 
@@ -24,9 +23,7 @@ export const Dashboard = (props) => {
     },[])
 
     return (
-        <>
-        <img className="register-img" alt ="" src={Logo}></img>
-        
+        <>        
         <div className="dashboard-container">
             <div className="right-side">
                 <h1 className="welcome"> Welcome, {currentBride.first_name}! </h1>
@@ -37,14 +34,14 @@ export const Dashboard = (props) => {
                     currentWedding.location : <span className="wedding-location" onClick={() => {
                         setEditMode(true)
                     }}>
-                        Add Location to Event
+                        add location to wedding event
                     </span>
                 }
                 </div>
                 <span className="updateEvent" onClick={() => {
                         setEditMode(true)
                     }}>
-                        Update Event Details
+                        update event details
                     </span>
             </div>
             <div>
@@ -56,13 +53,13 @@ export const Dashboard = (props) => {
                         : null}
             </div>
             <div className="left-side">
-                <Link to={`/checklist/wedding/${currentWedding.id}`}> Wedding Checklist</Link>
+                <Link to="/checklist"> Wedding Checklist</Link>
                 <br></br>
-                <Link to={`/budget/wedding/${currentWedding.id}`}>Bugeter</Link>
+                <Link to="/budget">Bugeter</Link>
                 <br></br>
                 <Link to="/guests">Guest List</Link>
                 <br></br>
-                <Link to={`/visionboard/wedding/${currentWedding.id}`}>Vision Board</Link>
+                <Link to="/visionboard">Vision Board</Link>
                 <br></br>
                 <Link className="logout" onClick={() => {
                     localStorage.removeItem("blue_token")

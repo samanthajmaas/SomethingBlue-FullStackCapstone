@@ -1,19 +1,13 @@
-import React, { useContext, useEffect, useState } from "react"
-import { WeddingContext } from "../weddings/WeddingProvider"
+import React, { useState } from "react"
 
 export const BudgetContext = React.createContext()
 
 export const BudgetProvider = (props) => {
 
     const [budgetItems, setBudgetItems] = useState([])
-    const {currentWedding, getCurrentWedding} = useContext(WeddingContext)
 
-    useEffect(() => {
-        getCurrentWedding()
-    }, [])
-
-    const getBudgetItems = (weddingId) => {
-        return fetch(`http://localhost:8000/budget?wedding=${weddingId}`, {
+    const getBudgetItems = () => {
+        return fetch('http://localhost:8000/budget', {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("blue_token")}`,
                 "Content-Type": "application/json"
@@ -30,7 +24,7 @@ export const BudgetProvider = (props) => {
                 "Authorization": `Token ${localStorage.getItem("blue_token")}`
             }
         })
-            .then(res =>getBudgetItems(currentWedding.id))
+            .then(getBudgetItems)
     }
 
     const addBudgetItem = (item) => {
@@ -43,7 +37,7 @@ export const BudgetProvider = (props) => {
             body: JSON.stringify(item)
         })
         .then(res => res.json())
-        .then(res =>getBudgetItems(currentWedding.id))
+        .then(getBudgetItems)
     }
 
     const updateBudget = item => {
