@@ -9,10 +9,12 @@ export const Dashboard = (props) => {
     const {currentBride, getCurrentBride, getSingleBride, bride} = useContext(BrideContext)
     const {currentWedding, getCurrentWedding} = useContext(WeddingContext)
     const [editMode, setEditMode] = useState(false)
+    const [changed, setChanged] = useState(true)
+    const toggleChange = () => (changed ? setChanged(false) : setChanged(true))
 
     useEffect(()=>{
         getCurrentBride()
-    },[])
+    },[changed])
 
     useEffect(() =>{
         getSingleBride(currentBride.id)
@@ -20,7 +22,13 @@ export const Dashboard = (props) => {
 
     useEffect(()=>{
         getCurrentWedding()
-    },[])
+    },[changed])
+
+    const fixDate = () => {
+        if (currentWedding.hasOwnProperty('event_date')){
+            return new Date(currentWedding.event_date.concat("T00:00:00")).toDateString({})
+        }
+    }
 
     return (
         <>        
@@ -29,7 +37,7 @@ export const Dashboard = (props) => {
                 <h1 className="welcome"> Welcome, {currentBride.first_name}! </h1>
                 <img className="image" style={{height: "20em"}} alt="" src={bride.profile_image_url}/>
                 <br></br>
-                <div className="weddingDate">{currentWedding.event_date}</div>
+                <div className="weddingDate">{fixDate()}</div>
                 <div className="weddingLocation">{currentWedding.location != null ?
                     currentWedding.location : <span className="wedding-location" onClick={() => {
                         setEditMode(true)
@@ -49,6 +57,7 @@ export const Dashboard = (props) => {
                         ? <EditWeddingForm
                             currentWedding={currentWedding}
                             setEditMode={setEditMode}
+                            toggleChange ={toggleChange}
                             {...props} />
                         : null}
             </div>

@@ -114,7 +114,7 @@ fieldset {
     font-style: normal;
     font-weight: normal;
     font-size: 1.3rem;
-    color: #9DC5D1;
+    /* color: #9DC5D1; */
     border: none;
 }
 
@@ -139,4 +139,9 @@ fieldset {
     line-height: 30px;
     text-align: center;
     color: #FCFCFC;
+}
+
+.date-label{
+    color: #9DC5D1;
+    font-size: 1.2em;
 }

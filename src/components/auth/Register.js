@@ -94,7 +94,7 @@ export const Register = (props) => {
                     <input ref={verifyPassword} type="password" name="verifyPassword" className="form-control" placeholder="Verify password" required />
                 </fieldset>
                 <fieldset className="register-input">
-                    <label for="eventDate">Date of Wedding Event</label>
+                    <label className="date-label" for="eventDate">Date of Wedding Event</label>
                     <input ref={eventDate} type="date" name="eventDate" className="form-control" required />
                 </fieldset>
                 <fieldset style={{

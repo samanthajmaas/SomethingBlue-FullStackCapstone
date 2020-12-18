@@ -3,9 +3,11 @@ import { ChecklistItem } from "./ChecklistItem"
 import { ChecklistContext } from "./ChecklistProvider"
 import { AddNewToDo } from "./NewToDoForm"
 import "./Checklist.css"
+import { WeddingContext } from "../weddings/WeddingProvider"
 
 export const Checklist = (props) => {
     const { checklistItems, getChecklistItems } = useContext(ChecklistContext)
+    const {currentWedding, getCurrentWedding} = useContext(WeddingContext)
     const [addMode, setAddMode] = useState(false)
     const [editMode, setEditMode] = useState(false)
     const [changed, setChanged] = useState(true)
@@ -16,53 +18,69 @@ export const Checklist = (props) => {
         getChecklistItems(weddingId)
     }, [changed])
 
+    useEffect(()=>{
+        getCurrentWedding()
+    })
+
+    const daysLeft = () => {
+        const weddingDate = currentWedding.event_date
+        const day = new Date().getDate()
+        const month = new Date().getMonth() +1
+        const year = new Date().getFullYear()
+
+        const today = [month, day, year]
+        return today
+    }
+
     return (
         <>
-            <div className="checklist-list-cont">
+            <article className="checklist-list-cont">
                 <div className="checklistitems-right">
-                    <h2>Your Wedding Checklist</h2>
-                    <div className="countdown"> "Insert countdown" Days Left!</div>
-
-                    <div className="checlist-items-left">
-                        <button className="addItem" onClick={() => {
-                            setAddMode(true)
-                        }}>add to do</button>
-                        <div>
+                    <h2 className="checklist-title">Your Wedding Checklist</h2>
+                    <div className="countdown"> {daysLeft()} Days Left!</div>
+                </div>
+                <div className="checlist-items-left">
+                    <div className="btn-cont">
+                        <div className="add-btn-cont">
+                            <button className="addItem btn" onClick={() => {
+                                setAddMode(true)
+                            }}>add to do</button>
+                        </div>
+                        <div className="edit-btn-cont ">
                             {
                                 editMode == true ?
-                                    <button className="editList" onClick={() => {
+                                    <button className="editList btn" onClick={() => {
                                         setEditMode(false)
                                     }}>cancel</button> :
-                                    <button className="editList" onClick={() => {
+                                    <button className="editList btn" onClick={() => {
                                         setEditMode(true)
                                     }}>edit list</button>
                             }
                         </div>
-                        <div>
-                            {addMode
-                                ? <AddNewToDo
-                                    setAddMode={setAddMode}
-                                    {...props} />
-                                : null}
-                        </div>
-                </div>
-
-                
-                    <div className="items">
-                        {checklistItems.map(c => {
-                            return <ChecklistItem
-                                key={c.id}
-                                item={c}
-                                func={toggleChange}
-                                editMode={editMode}
-                                setEditMode={setEditMode}
+                    </div>
+                    <div className="add-to-do-cont">
+                        {addMode
+                            ? <AddNewToDo
+                                setAddMode={setAddMode}
                                 {...props} />
-                        })
-                        }
+                            : null}
+                    </div>
                 </div>
-                
-            </div>
-        </div>
+            </article>
+            <article className="checklist-bottom-cont">
+                <div className="items">
+                    {checklistItems.map(c => {
+                        return <ChecklistItem
+                            key={c.id}
+                            item={c}
+                            func={toggleChange}
+                            editMode={editMode}
+                            setEditMode={setEditMode}
+                            {...props} />
+                    })
+                    }
+                </div>
+            </article>
         </>
     )
 }

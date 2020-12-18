@@ -8,7 +8,6 @@ export const VBImage = (props) => {
         <>
             <section className="vb-image">
                     <>
-
                         <button className="btn-small fa fa-trash" onClick={() => deleteImage(props.image)}>X
                         </button>
                         <div>

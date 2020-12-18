@@ -21,8 +21,8 @@ export const EditWeddingForm = (props) => {
         updatedWedding(newWeddingObj)
             .then(()=> {
                 props.setEditMode(false)
-                props.history.push("/")
-                window.location.reload()
+                props.history.push("/dashboard")
+                props.toggleChange()
             })
         }
 
@@ -67,7 +67,7 @@ export const EditWeddingForm = (props) => {
                     changeWedding()
                 }}
                 className="btn post_submit_btn">
-                Save Event Details
+                save
             </button>
             <button type="button"
                 className="btn cancel"
@@ -75,7 +75,7 @@ export const EditWeddingForm = (props) => {
                     e.preventDefault()
                     props.setEditMode(false)
                 }}>
-                    Cancel
+                    cancel
             </button>
         </form>
     )

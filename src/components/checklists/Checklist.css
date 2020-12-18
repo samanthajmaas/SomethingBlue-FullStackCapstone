@@ -1,6 +1,56 @@
+
+.checklist-title{
+    text-decoration-line: underline;
+    color: #996D70;
+    font-size: 40px;
+}
 .checklist-list-cont{
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-top: 10%;
+    justify-content: space-between;
+    margin-top: 10%;   
+}
+
+.checklistitems-right{
+    margin-left: 15em;
+}
+
+.checlist-items-left{
+    margin-right: 20em;
+}
+
+.checklist-bottom-cont{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-left:25%; 
+    margin-top: 5%; 
+}
+
+.btn-cont{
+    display: flex;
+}
+
+.add-btn-cont{
+    margin-right: 2em;
+}
+
+/* .add-to-do-cont{
+    margin-top: 5em;
+} */
+
+.item-cont{
+    display: flex;
+}
+
+.top-item-cont{
+    display: flex;
+}
+
+.item-name{
+    margin-top: .5em;
+}
+
+.completed{
+    margin-left: 6em;
 }
