@@ -33,6 +33,14 @@
 .add-btn-cont{
     margin-right: 2em;
 }
+.edit-checklist-container{
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    margin-top: 2%; 
+    width: 61em;
+    height: 6em;
+}
 
 .item-cont{
     display: flex;
@@ -43,11 +51,21 @@
 }
 
 .item-name{
-    margin-top: .5em;
+    margin-top: .4em;
+    font-size: 1.2em;
+}
+
+.edit-item-name{
+    margin-top: .8em;
+    font-size: 1.2em;
 }
 
 .completed{
     margin-left: 6em;
+}
+
+.edit-completed{
+    margin-left: 10em;
 }
 
 #addToDoForm{
@@ -61,3 +79,10 @@
 .x{
     cursor: pointer;
 }
+
+.delete-check-btn{
+    max-height: 2.3em !important;
+    margin-top: 1.5em;
+    margin-left: 1em;
+}
+

@@ -19,6 +19,10 @@
     font-size: 40px;
 }
 
+.subheader{
+    font-size:1.2em;
+}
+
 .budgetItem{
     display: flex;
     justify-content: space-between;
