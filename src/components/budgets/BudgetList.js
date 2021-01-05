@@ -49,6 +49,22 @@ export const BudgetList = (props) => {
                     </div>
                 </section>
             </article>
+            {
+                addMode ? 
+                <article className="items" style={{ marginTop: '20em' }}>
+                {budgetItems.map(b => {
+                    return <BudgetItem
+                        key={b.id}
+                        item={b}
+                        func={toggleChange}
+                        editMode={editMode}
+                        setEditMode={setEditMode}
+                        {...props} />
+                })
+                }
+            </article> :
+
+            
             <article className="items">
                 {budgetItems.map(b => {
                     return <BudgetItem
@@ -61,7 +77,7 @@ export const BudgetList = (props) => {
                 })
                 }
             </article>
-
+            }
         </>
     )
 }

@@ -30,7 +30,7 @@ export const BudgetItem = (props) => {
                 <>
                     {
                         props.editMode ?
-                            <button className="btn" onClick={() => deleteBudgetItem(props.item)}>X</button> 
+                            <button className="btn delete-btn" onClick={() => deleteBudgetItem(props.item)}>delete</button> 
                             :
                             null
                     }

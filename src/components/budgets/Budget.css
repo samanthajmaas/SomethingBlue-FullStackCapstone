@@ -23,5 +23,59 @@
     display: flex;
     justify-content: space-between;
     margin-left:15%; 
-    margin-top: 5%; 
+    margin-top: 2%; 
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    margin-right: 20em;
+}
+
+.budget-save-for{
+    text-align: center;
+    padding: 2em;
+    font-size:1.2em;
+}
+
+.inputs{
+    display: flex;
+    padding-right: 2em;
+}
+.estimated_cost{
+    max-width: 7em;
+}
+
+.estimated_cost::placeholder {
+    text-align: center !important;
+    font-size: 1rem !important;
+}
+
+.actual_cost{
+    max-width: 7em;
+}
+
+.actual_cost::placeholder {
+    text-align: center !important;
+    font-size: 1rem !important;
+}
+
+#save_for::placeholder{
+    text-align: center !important;
+    font-size: 1rem !important;
+}
+#estimated_cost::placeholder{
+    text-align: center !important;
+    font-size: 1rem !important;
+}
+
+#addSaveForForm{
+    position: absolute;
+    top: 20em;
+    background: white !important;
+    border-radius: 10px;
+}
+
+.delete-btn{
+    max-height: 3em !important;
+    margin-top: 1.7em;
+    margin-left: 1em;
 }

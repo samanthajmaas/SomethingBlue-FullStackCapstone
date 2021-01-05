@@ -5,8 +5,7 @@ export const  AddNewSaveFor= (props) => {
     const {addBudgetItem} = useContext(BudgetContext)
 
     const [item, setItem] = useState({
-        save_for: "",
-        estimated_cost: 10000
+        save_for: ""
     })
 
     const handleControlledInputChange = (e) => {
@@ -32,6 +31,7 @@ export const  AddNewSaveFor= (props) => {
             <fieldset>
                 <div className="form-div">
                     <input type="text" name="save_for" className="form-control save_for-input" id="save_for"
+                        placeholder="What are you saving for?"
                         defaultValue={item.save_for}
                         onChange={handleControlledInputChange}>
                     </input>
@@ -39,7 +39,8 @@ export const  AddNewSaveFor= (props) => {
             </fieldset>
             <fieldset>
                 <div className="form-div">
-                    <input type="text" name="estimated_cost" className="form-control estimated-input" id="extimated_cost"
+                    <input type="text" name="estimated_cost" className="form-control estimated-input" id="estimated_cost"
+                        placeholder="estimated cost"
                         defaultValue={item.estimated_cost}
                         onChange={handleControlledInputChange}>
                     </input>
