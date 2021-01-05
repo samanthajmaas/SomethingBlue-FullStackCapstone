@@ -14,21 +14,26 @@ export const GuestList = (props) => {
 
     return (
         <>
-            <div className="guestlist-cont">
-                <section className="guests">
-                <h2>Guest List</h2>
-                <div className="number of guests">"NUMBER OF GUESTS"</div>
-                    <button className="addItem" onClick={() => {
+        <div className="guest-list-page">
+            <article className="guestlist-cont">
+                <section className="guestList-right">
+                    <h2 className="guestListTitle">Guest List</h2>
+                    <div className="numberOfGuests">"NUMBER OF GUESTS"</div>
+                </section>
+                <section className="guestList-left">
+                    <button className="btn" onClick={() => {
                         setAddMode(true)
                     }}>add guests</button>
-                <div>
-                    {addMode
-                        ? <NewGuestForm
-                            setAddMode={setAddMode}
-                            {...props} />
-                    : null}
-                </div>
-                <div className="theguests">
+                    <div>
+                        {addMode
+                            ? <NewGuestForm
+                                setAddMode={setAddMode}
+                                {...props} />
+                        : null}
+                    </div>
+                </section>
+                </article>
+                <section className="theguests">
                     {guests.map(g => {
                         return <Guest
                             key={g.id}
@@ -36,7 +41,6 @@ export const GuestList = (props) => {
                             {...props} />
                     })
                     }
-                </div>
                 </section>
             </div>
         </>

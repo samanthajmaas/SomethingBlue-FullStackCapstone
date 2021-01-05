@@ -1,6 +1,99 @@
+.guest-list-page{
+    margin-bottom: 10%;
+}
+
 .guestlist-cont{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 10%;
+}
+
+.guestList-right{
+    margin-left: 15em;
+}
+
+.guestList-left{
+    margin-right: 25em;
+}
+
+.guestListTitle{
+    text-decoration-line: underline;
+    color: #996D70;
+    font-size: 40px;
+}
+
+.numberOfGuests{
+    font-size:1.2em;
+}
+
+.cancel-new-guest{
+    position: relative;
+    left: 20em;
+}
+#newGuestForm{
+    position: absolute;
+    top: 20em;
+    background: white !important;
+    border-radius: 10px;
+    width: 20em;
+}
+#first_name::placeholder{
+    text-align: center !important;
+    font-size: 1rem !important;
+}
+
+#last_name::placeholder{
+    text-align: center !important;
+    font-size: 1rem !important;
+}
+#address::placeholder{
+    text-align: center !important;
+    font-size: 1rem !important;
+}
+#phone::placeholder{
+    text-align: center !important;
+    font-size: 1rem !important;
+}
+#numberOfGuests::placeholder{
+    text-align: center !important;
+    font-size: 1rem !important;
+}
+
+.form-cont{
+    display: flex;
+}
+
+.left-three{
+    margin-right: 4em;
+}
+
+.rsvp-status{
+    position: relative;
+    top: .2em;
+    left: 1em;
+    width: 10em;  
+}
+
+.guest{
+    display: flex;
+    justify-content: space-between;
+    margin-left:15%; 
+    margin-top: 2%; 
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    margin-right: 20em;
+    text-align: center;
+    padding: 2em;
+    font-size:1.2em;
+}
+
+.guest-btn{
+    font-size: .7em !important;
+}
+
+.edit-guest-bnt{
+    position: relative;
+    left: 4em;
 }

@@ -4,3 +4,12 @@
     justify-content: center;
     margin-top: 10%;
 }
+
+.vs-top-cont{
+    display: flex;
+}
+
+.subheading{
+    font-size: 1.5em;
+    margin-right: 30em;
+}

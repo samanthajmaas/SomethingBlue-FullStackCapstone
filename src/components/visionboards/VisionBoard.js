@@ -15,19 +15,22 @@ export const VisionBoard = (props) => {
 
     return (
         <>
-            <div className="visionboard-cont">
-                <section className="images">
-                <div className="countdown">A place for all of your visions and dreams...</div>
-                    <button className="addItem" onClick={() => {
+            <article className="visionboard-cont">
+                <section className="vs-top-cont">
+                    <div className="subheading">A place for all of your visions and dreams...</div>
+                    <button className="btn inspo-btn" onClick={() => {
                         setAddMode(true)
                     }}>add inspiration</button>
-                <div>
-                    {addMode
-                        ? <NewImageForm
-                            setAddMode={setAddMode}
-                            {...props} />
-                        : null}
-                </div>
+                    <div>
+                        {addMode
+                            ? <NewImageForm
+                                setAddMode={setAddMode}
+                                {...props} />
+                            : null}
+                    </div>
+                </section>
+            </article>
+            <article className="visboard-bottom-cont">
                 <div className="images">
                     {images.map(i => {
                         return <VBImage
@@ -37,8 +40,7 @@ export const VisionBoard = (props) => {
                     })
                     }
                 </div>
-                </section>
-            </div>
+            </article>
         </>
     )
 }

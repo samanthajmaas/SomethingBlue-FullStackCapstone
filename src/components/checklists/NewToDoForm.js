@@ -23,7 +23,7 @@ export const  AddNewToDo= (props) => {
         <form className="form addTodoForm" id="addToDoForm">
             <div className="toprow">
                 <h2 className="todoForm_label">add new to do</h2>
-                    <span className=" x" onClick={()=>{
+                    <span className="x" onClick={()=>{
                         props.setAddMode(false)
                     }}>X</span>
                     
