@@ -7,7 +7,7 @@ import { WeddingContext } from "../weddings/WeddingProvider"
 
 export const Checklist = (props) => {
     const { checklistItems, getChecklistItems } = useContext(ChecklistContext)
-    const {currentWedding, getCurrentWedding} = useContext(WeddingContext)
+    const {currentWedding} = useContext(WeddingContext)
     const [addMode, setAddMode] = useState(false)
     const [editMode, setEditMode] = useState(false)
     const [changed, setChanged] = useState(true)
@@ -18,17 +18,13 @@ export const Checklist = (props) => {
         getChecklistItems(weddingId)
     }, [changed])
 
-    useEffect(()=>{
-        getCurrentWedding()
-    })
-
     const daysLeft = () => {
         const weddingDate = currentWedding.event_date
         const day = new Date().getDate()
         const month = new Date().getMonth() +1
         const year = new Date().getFullYear()
 
-        const today = [month, day, year]
+        const today = [month, day, year, " ", weddingDate]
         return today
     }
 

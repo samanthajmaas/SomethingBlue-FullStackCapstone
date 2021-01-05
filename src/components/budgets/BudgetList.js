@@ -18,45 +18,50 @@ export const BudgetList = (props) => {
 
     return (
         <>
-            <div className="budgetlist-cont">
-                <section className="budgetListItems">
-                <h2>Your Wedding Budget</h2>
-                <div className="subheader">Keep track of your budget and spending.</div>
-                    <button className="addItem" onClick={() => {
-                        setAddMode(true)
-                    }}>add budget item</button>
-                <div>
-                    {
-                        editMode == true ?
-                        <button className="editList" onClick={() => {
-                            setEditMode(false)
-                        }}>cancel</button> :
-                        <button className="editList" onClick={() => {
-                            setEditMode(true)
-                        }}>edit list</button>
-                    }
-                </div>
-                <div>
-                    {addMode
-                        ? <AddNewSaveFor
-                            setAddMode={setAddMode}
-                            {...props} />
-                        : null}
-                </div>
-                <div className="items">
-                    {budgetItems.map(b => {
-                        return <BudgetItem
-                            key={b.id}
-                            item={b}
-                            func={toggleChange}
-                            editMode = {editMode}
-                            setEditMode = {setEditMode}
-                            {...props} />
-                    })
-                    }
-                </div>
+            <article className="budgetlist-cont">
+                <section className="budgetListItems-right">
+                    <h2 className="budget-title">Your Wedding Budget</h2>
+                    <div className="subheader">Keep track of your budget and spending.</div>
                 </section>
-            </div>
+                <section className="budgetListItems-left">
+                    <div className="btn-cont">
+                        <button className="addItem btn" onClick={() => {
+                            setAddMode(true)
+                        }}>add budget item</button>
+                        <div className="edit-btn-cont">
+                            {
+                                editMode == true ?
+                                    <button className="editList btn" onClick={() => {
+                                        setEditMode(false)
+                                    }}>cancel</button> :
+                                    <button className="editList btn" onClick={() => {
+                                        setEditMode(true)
+                                    }}>edit list</button>
+                            }
+                        </div>
+                    </div>
+                    <div>
+                        {addMode
+                            ? <AddNewSaveFor
+                                setAddMode={setAddMode}
+                                {...props} />
+                            : null}
+                    </div>
+                </section>
+            </article>
+            <article className="items">
+                {budgetItems.map(b => {
+                    return <BudgetItem
+                        key={b.id}
+                        item={b}
+                        func={toggleChange}
+                        editMode={editMode}
+                        setEditMode={setEditMode}
+                        {...props} />
+                })
+                }
+            </article>
+
         </>
     )
 }

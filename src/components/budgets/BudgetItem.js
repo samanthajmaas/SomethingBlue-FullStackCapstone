@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react"
 import { BudgetContext } from "./BudgetProvider"
+import "./Budget.css"
 
 export const BudgetItem = (props) => {
 
@@ -29,9 +30,8 @@ export const BudgetItem = (props) => {
                 <>
                     {
                         props.editMode ?
-
-                            <button className="btn-small fa fa-trash" onClick={() => deleteBudgetItem(props.item)}>X
-                        </button> :
+                            <button className="btn" onClick={() => deleteBudgetItem(props.item)}>X</button> 
+                            :
                             null
                     }
                     <div>
@@ -39,7 +39,7 @@ export const BudgetItem = (props) => {
                     </div>
                     <div className="inputs">
                         <fieldset>
-                            <div className="form-div">
+                            <div className="estimated-cost">
                                 <input type="text" name="estimated_cost" className="form-control estimated_cost" id="estimated_cost"
                                     defaultValue={props.item.estimated_cost}
                                     placeholder="estimated cost"
@@ -49,7 +49,7 @@ export const BudgetItem = (props) => {
                             </div>
                         </fieldset>
                         <fieldset>
-                            <div className="form-div">
+                            <div className="actual-cost">
                                 <input type="text" name="actual_cost" className="form-control actual_cost" id="actual_cost"
                                     defaultValue={props.item.actual_cost}
                                     placeholder="actual cost"

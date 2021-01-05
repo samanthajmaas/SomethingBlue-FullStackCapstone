@@ -22,12 +22,13 @@ export const  AddNewToDo= (props) => {
     return (
         <form className="form addTodoForm" id="addToDoForm">
             <div className="toprow">
-                <div className="toprowblank"></div>
-                <span className="x" onClick={()=>{
-                    props.setAddMode(false)
-                }}>X</span>
+                <h2 className="todoForm_label">add new to do</h2>
+                    <span className=" x" onClick={()=>{
+                        props.setAddMode(false)
+                    }}>X</span>
+                    
             </div>
-            <h2 className="todoForm_label">add new to do</h2>
+            
             <fieldset>
                 <div className="form-div">
                     <input type="text" name="toDo" className="form-control toDo-input" id="toDo"

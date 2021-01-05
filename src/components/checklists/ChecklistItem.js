@@ -12,21 +12,10 @@ export const ChecklistItem = (props) => {
         props.func()
     }
 
-    // const daysTillWedding = () => {
-    //     const weddingDate = props.item.wedding.event_date
-    // }
-
     return (
         <>
             <section className="checklistItem">
                 <>
-                    {
-                        props.editMode ?
-
-                            <button className="btn-small" onClick={() => deleteChecklistItem(props.item)}>X
-                        </button> :
-                            null
-                    }
                     <div>
                         {
                             props.item.completed_date != null ?
@@ -39,9 +28,16 @@ export const ChecklistItem = (props) => {
                                             inputProps={{ 'aria-label': 'primary checkbox' }}
                                         />
                                         <div className="item-name" style={{ textDecorationLine: 'line-through' }}>{props.item.checklist_item.toDo}</div>
+                                        {
+                                            props.editMode ?
+
+                                                <button className="sml-btn" onClick={() => deleteChecklistItem(props.item)}> delete item</button> 
+                                                :
+                                                null
+                                        }
                                     </div>
                                     <div className="completed">Completed on: {new Date(props.item.completed_date.concat("T00:00:00")).toDateString({})}</div>
-                                    
+
                                 </>
 
                                 :
@@ -54,6 +50,13 @@ export const ChecklistItem = (props) => {
                                             inputProps={{ 'aria-label': 'primary checkbox' }}
                                         />
                                         <div className="item-name">{props.item.checklist_item.toDo}</div>
+                                        {
+                                            props.editMode ?
+
+                                                <button className="sml-btn" onClick={() => deleteChecklistItem(props.item)}> delete item</button> 
+                                                :
+                                                null
+                                        }
                                     </div>
                                 </>
                         }

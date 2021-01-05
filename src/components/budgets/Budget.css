@@ -1,6 +1,27 @@
 .budgetlist-cont{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 10%;
+}
+
+.budgetListItems-right{
+    margin-left: 15em;
+}
+
+.budgetListItems-left{
+    margin-right: 20em;
+}
+
+.budget-title{
+    text-decoration-line: underline;
+    color: #996D70;
+    font-size: 40px;
+}
+
+.budgetItem{
+    display: flex;
+    justify-content: space-between;
+    margin-left:15%; 
+    margin-top: 5%; 
 }
