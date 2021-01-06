@@ -17,16 +17,20 @@ export const VisionBoard = (props) => {
         <>
             <article className="visionboard-cont">
                 <section className="vs-top-cont">
-                    <div className="subheading">A place for all of your visions and dreams...</div>
-                    <button className="btn inspo-btn" onClick={() => {
-                        setAddMode(true)
-                    }}>add inspiration</button>
-                    <div>
-                        {addMode
-                            ? <NewImageForm
-                                setAddMode={setAddMode}
-                                {...props} />
-                            : null}
+                    <div className="vs-top-left">
+                        <div className="subheading">A place for all of your visions and dreams...</div>
+                    </div>
+                    <div className="vs-top-right">
+                        <button className="btn inspo-btn" onClick={() => {
+                            setAddMode(true)
+                        }}>add inspiration</button>
+                        <div>
+                            {addMode
+                                ? <NewImageForm
+                                    setAddMode={setAddMode}
+                                    {...props} />
+                                : null}
+                        </div>
                     </div>
                 </section>
             </article>

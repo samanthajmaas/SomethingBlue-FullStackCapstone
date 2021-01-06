@@ -28,13 +28,13 @@ export const  NewImageForm= (props) => {
         <form className="form addImageForm" id="addImageForm">
             <div className="toprow">
                 <div className="toprowblank"></div>
-                <span className="x" onClick={()=>{
+                <span className="vs-x x" onClick={()=>{
                     props.setAddMode(false)
                 }}>X</span>
             </div>
             <h2 className="todoForm_label">new inspiration</h2>
             <fieldset>
-                    <input className="register-input photoUpload" type="file" id="vb_img" onChange={(evt) => { createImageJSON(evt) }} />
+                    <input className="register-input vs-photoUpload" type="file" id="vb_img" onChange={(evt) => { createImageJSON(evt) }} />
             </fieldset>
             <button type="submit"
                 onClick={e => {

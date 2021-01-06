@@ -13,3 +13,25 @@
     font-size: 1.5em;
     margin-right: 30em;
 }
+
+.images{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 5%;
+    flex-wrap: wrap;
+}
+
+.vs-x{
+    position: relative;
+    right: 6em;
+}
+
+.vb-img{
+    cursor: pointer;
+}
+
+.vs-delete{
+    position: relative;
+    top: 3.3em;
+    left: .6em;
+}
