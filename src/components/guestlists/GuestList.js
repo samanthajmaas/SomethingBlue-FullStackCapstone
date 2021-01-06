@@ -12,13 +12,38 @@ export const GuestList = (props) => {
         getGuests()
     }, [])
 
+    const totalInvited = () => {
+        const partyNumbers = []
+        const mapping = guests.map(g => 
+            partyNumbers.push(g.number_of_guests_in_party))
+        let sum = 0
+        for (let num of partyNumbers){
+            sum = sum + num
+        } 
+        return sum
+    }
+
+    const totalAttending = () => {
+        const partyNumbers = []
+        const guestsWhoAttending = guests.filter(g => g.rsvp_status === "attending")
+        const mapped = partyNumbers.push(guestsWhoAttending.number_of_guests_in_party)
+        let sum = 0
+        for (let num of partyNumbers){
+            sum = sum + num
+        } 
+        return sum
+        
+    }
+
     return (
         <>
         <div className="guest-list-page">
             <article className="guestlist-cont">
                 <section className="guestList-right">
                     <h2 className="guestListTitle">Guest List</h2>
-                    <div className="numberOfGuests">"NUMBER OF GUESTS"</div>
+                    <div className="numberOfGuests">
+                        {totalInvited()} guests invited : {totalAttending()} guests attending
+                    </div>
                 </section>
                 <section className="guestList-left">
                     <button className="btn" onClick={() => {
