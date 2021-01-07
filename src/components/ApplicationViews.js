@@ -1,5 +1,5 @@
 import React from "react"
-import {Route} from "react-router-dom"
+import { Route } from "react-router-dom"
 import { BrideProvider } from "./brides/BrideProvider"
 import { BudgetList } from "./budgets/BudgetList"
 import { BudgetProvider } from "./budgets/BudgetProvider"
@@ -17,49 +17,52 @@ import Logo from "./NavLogo.png"
 export const ApplicationViews = (props) => {
     return (
         <>
-        <img className="logo"
-                        to="/dashboard"
-                        onClick={()=>{
-                        props.history.push("/dashboard")}}
-                        src={Logo} />
-        <Nav {...props}/>
-        <BrideProvider>
+            <img className="logo"
+                to="/dashboard"
+                onClick={() => {
+                    props.history.push("/dashboard")
+                }}
+                src={Logo} />
+            <Nav {...props} />
+            <BrideProvider>
+                <WeddingProvider>
+                    <Route exact path="/dashboard" render={
+                        props => <Dashboard {...props} />
+                    } />
+                </WeddingProvider>
+            </BrideProvider>
+
+            
+                <WeddingProvider>
+                    <ChecklistProvider>
+                        <Route exact path="/checklist" render={
+                            props => <Checklist {...props} />
+                        } />
+                    </ChecklistProvider>
+                </WeddingProvider>
+
+
             <WeddingProvider>
-                <Route exact path="/dashboard" render={
-                    props=> <Dashboard {...props} />
-                } />
+                <BudgetProvider>
+                    <Route exact path="/budget" render={
+                        props => <BudgetList {...props} />
+                    } />
+                </BudgetProvider>
             </WeddingProvider>
-        </BrideProvider>
-        
-        <WeddingProvider>
-            <ChecklistProvider>
-                <Route exact path="/checklist" render={
-                            props=> <Checklist {...props} />
-                }/>
-            </ChecklistProvider>
-        </WeddingProvider>
 
-        <WeddingProvider>
-            <BudgetProvider>
-                <Route exact path="/budget" render={
-                            props=> <BudgetList {...props} />
-                }/>
-            </BudgetProvider>
-        </WeddingProvider>
+            <WeddingProvider>
+                <VisionBoardProvider>
+                    <Route exact path="/visionboard" render={
+                        props => <VisionBoard {...props} />
+                    } />
+                </VisionBoardProvider>
+            </WeddingProvider>
 
-        <WeddingProvider>
-            <VisionBoardProvider>
-                <Route exact path="/visionboard" render={
-                            props=> <VisionBoard {...props} />
-                }/>
-            </VisionBoardProvider>
-        </WeddingProvider>
-
-        <GuestProvider>
-            <Route exact path="/guests" render={
-                        props=> <GuestList {...props} />
-            }/>
-        </GuestProvider>
+            <GuestProvider>
+                <Route exact path="/guests" render={
+                    props => <GuestList {...props} />
+                } />
+            </GuestProvider>
         </>
     )
 }

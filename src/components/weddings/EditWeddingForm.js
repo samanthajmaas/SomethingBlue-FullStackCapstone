@@ -3,7 +3,12 @@ import { WeddingContext } from "./WeddingProvider"
 
 export const EditWeddingForm = (props) => {
     const { updatedWedding } = useContext(WeddingContext)
-    const [wedding, setWedding] = useState({})
+    const [wedding, setWedding] = useState({
+        id: props.currentWedding.id,
+        event_date: props.currentWedding.event_date,
+        location: props.currentWedding.location,
+        budget: props.currentWedding.budget
+    })
 
     const handleControlledInputChange = (e) => {
         const newWedding = Object.assign({}, wedding)
@@ -12,19 +17,19 @@ export const EditWeddingForm = (props) => {
     }
 
     const changeWedding = () => {
-        const newWeddingObj = {
-            id: props.currentWedding.id,
-            event_date: wedding.event_date,
-            location: wedding.location,
-            budget: wedding.budget
-        }
-        updatedWedding(newWeddingObj)
-            .then(()=> {
+        // const newWeddingObj = {
+        //     id: props.currentWedding.id,
+        //     event_date: wedding.event_date,
+        //     location: wedding.location,
+        //     budget: wedding.budget
+        // }
+        updatedWedding(wedding)
+            .then(() => {
                 props.setEditMode(false)
                 props.history.push("/dashboard")
                 props.toggleChange()
             })
-        }
+    }
 
     return (
 
@@ -75,7 +80,7 @@ export const EditWeddingForm = (props) => {
                     e.preventDefault()
                     props.setEditMode(false)
                 }}>
-                    cancel
+                cancel
             </button>
         </form>
     )

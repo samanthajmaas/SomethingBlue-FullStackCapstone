@@ -4,13 +4,15 @@ import { ChecklistContext } from "./ChecklistProvider"
 import { AddNewToDo } from "./NewToDoForm"
 import "./Checklist.css"
 import { WeddingContext } from "../weddings/WeddingProvider"
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 export const Checklist = (props) => {
-    const { checklistItems, getChecklistItems } = useContext(ChecklistContext)
-    const {currentWedding} = useContext(WeddingContext)
+    const { checklistItems, getChecklistItems, searchTerms, setTerms } = useContext(ChecklistContext)
+    const { currentWedding } = useContext(WeddingContext)
     const [addMode, setAddMode] = useState(false)
     const [editMode, setEditMode] = useState(false)
     const [changed, setChanged] = useState(true)
+    const [filteredChecklist, setFiltered] = useState([])
     const toggleChange = () => (changed ? setChanged(false) : setChanged(true))
 
     useEffect(() => {
@@ -18,65 +20,120 @@ export const Checklist = (props) => {
         getChecklistItems(weddingId)
     }, [changed])
 
+    useEffect(() => {
+        if (searchTerms !== "") {
+            const subset = checklistItems.filter(ci =>
+                ci.checklist_item.toDo.toLowerCase().includes(searchTerms.toLowerCase()))
+            setFiltered(subset)
+        } else (
+            setFiltered([])
+        )
+    }, [searchTerms, checklistItems])
+
     const daysLeft = () => {
         const weddingDate = currentWedding.event_date
         const day = new Date().getDate()
-        const month = new Date().getMonth() +1
+        const month = new Date().getMonth() + 1
         const year = new Date().getFullYear()
 
         const today = [month, day, year, " ", weddingDate]
         return today
     }
 
+    const progress = () => {
+        const findingProgress = checklistItems.filter(ci => ci.completed_date !== null)
+        const currentProgress = findingProgress.length
+        return currentProgress
+    }
+
     return (
         <>
-            <article className="checklist-list-cont">
-                <div className="checklistitems-right">
-                    <h2 className="checklist-title">Your Wedding Checklist</h2>
-                    <div className="countdown"> {daysLeft()} Days Left!</div>
-                </div>
-                <div className="checlist-items-left">
-                    <div className="btn-cont">
-                        <div className="add-btn-cont">
-                            <button className="addItem btn" onClick={() => {
-                                setAddMode(true)
-                            }}>add to do</button>
+            <DragDropContext>
+                <article className="checklist-list-cont">
+                    <div className="checklistitems-right">
+                        <h2 className="checklist-title">Your Wedding Checklist</h2>
+                        <div className="countdown"> {daysLeft()} Days Left!</div>
+                    </div>
+
+                    <div className="checlist-items-left">
+                        <div className="btn-cont">
+                            <div className="add-btn-cont">
+                                <button className="addItem btn" onClick={() => {
+                                    setAddMode(true)
+                                }}>add to do</button>
+                            </div>
+                            <div className="edit-btn-cont ">
+                                {
+                                    editMode == true ?
+                                        <button className="editList btn" onClick={() => {
+                                            setEditMode(false)
+                                        }}>cancel</button> :
+                                        <button className="editList btn" onClick={() => {
+                                            setEditMode(true)
+                                        }}>edit list</button>
+                                }
+                            </div>
                         </div>
-                        <div className="edit-btn-cont ">
+                        <div className="add-to-do-cont">
+                            {addMode
+                                ? <AddNewToDo
+                                    setAddMode={setAddMode}
+                                    {...props} />
+                                : <input type="text"
+                                    className="search"
+                                    onKeyUp={
+                                        (keyEvent) => setTerms(keyEvent.target.value)
+                                    }
+                                    placeholder="Search " />}
+                        </div>
+
+                    </div>
+                </article>
+                <div className="checklistitems-middle">
+                    <div className="progress-cont">
+                        <div className="progress-label">{progress()} / {checklistItems.length} completed</div>
+                        <progress value={progress()} max={checklistItems.length} />
+                    </div>
+                </div>
+                <article className="checklist-bottom-cont">
+                    {filteredChecklist.length !== 0 ?
+                        <div className="filteredChecklist">
                             {
-                                editMode == true ?
-                                    <button className="editList btn" onClick={() => {
-                                        setEditMode(false)
-                                    }}>cancel</button> :
-                                    <button className="editList btn" onClick={() => {
-                                        setEditMode(true)
-                                    }}>edit list</button>
+                                filteredChecklist.map(c => {
+                                    return <ChecklistItem
+                                        key={c.id}
+                                        item={c}
+                                        func={toggleChange}
+                                        editMode={editMode}
+                                        setEditMode={setEditMode}
+                                        {...props} />
+                                })
                             }
                         </div>
-                    </div>
-                    <div className="add-to-do-cont">
-                        {addMode
-                            ? <AddNewToDo
-                                setAddMode={setAddMode}
-                                {...props} />
-                            : null}
-                    </div>
-                </div>
-            </article>
-            <article className="checklist-bottom-cont">
-                <div className="items">
-                    {checklistItems.map(c => {
-                        return <ChecklistItem
-                            key={c.id}
-                            item={c}
-                            func={toggleChange}
-                            editMode={editMode}
-                            setEditMode={setEditMode}
-                            {...props} />
-                    })
+                        :
+                        <Droppable
+                            droppableId={currentWedding.id}>
+                            {(provided) => (
+                                <div className="items" {...provided.droppableProps} ref={provided.innerRef}>
+                                    {checklistItems.map((c, index) => {
+                                        return <ChecklistItem
+                                            key={c.id}
+                                            item={c}
+                                            func={toggleChange}
+                                            editMode={editMode}
+                                            setEditMode={setEditMode}
+                                            index={index}
+                                            {...props} />
+                                    })
+                                    }
+                                    {provided.placeholder}
+                                </div>
+                            )}
+
+                        </Droppable>
                     }
-                </div>
-            </article>
+                </article>
+            </DragDropContext>
         </>
     )
 }

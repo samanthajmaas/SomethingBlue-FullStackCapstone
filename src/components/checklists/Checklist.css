@@ -18,12 +18,18 @@
     margin-right: 20em;
 }
 
+.checklistitems-middle{
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+
 .checklist-bottom-cont{
     display: flex;
     align-items: center;
     justify-content: start;
     margin-left:25%; 
-    margin-top: 5%; 
+    margin-top: 2%; 
 }
 
 .btn-cont{
@@ -84,5 +90,15 @@
     max-height: 2.3em !important;
     margin-top: 1.5em;
     margin-left: 1em;
+}
+
+.search{
+    position: relative;
+    top: 2em;
+}
+
+progress{
+    width: 700px;
+    height: 60px;
 }
 

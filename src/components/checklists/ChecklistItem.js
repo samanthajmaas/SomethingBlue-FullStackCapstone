@@ -1,6 +1,8 @@
 import React, { useContext } from "react"
 import { ChecklistContext } from "./ChecklistProvider"
 import Checkbox from '@material-ui/core/Checkbox'
+import { Draggable } from 'react-beautiful-dnd';
+
 
 export const ChecklistItem = (props) => {
     const { deleteChecklistItem, markCompleted } = useContext(ChecklistContext)
@@ -21,12 +23,14 @@ export const ChecklistItem = (props) => {
                             <>
                                 {props.editMode ?
                                     <>
-                                        <div className="edit-checklist-container">
+                                        <Draggable key={props.item.id} draggableId={props.item.id} index={props.index}>
+                                            {(provided)=> (
+                                            <div className="edit-checklist-container" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
                                             <div className="top-item-cont">
-                                                <button className="btn delete-check-btn" onClick={() => deleteChecklistItem(props.item)}> delete </button>
+                                                <button className="btn delete-check-btn" onClick={() => props.deleteChecklistItem(props.item)}> delete </button>
                                                 <Checkbox
                                                     checked="true"
-                                                    onChange={handleChange}
+                                                    onChange={props.handleChange}
                                                     color="#996D70"
                                                     inputProps={{ 'aria-label': 'primary checkbox' }}
                                                 />
@@ -34,6 +38,8 @@ export const ChecklistItem = (props) => {
                                             </div>
                                             <div className="edit-completed">Completed on: {new Date(props.item.completed_date.concat("T00:00:00")).toDateString({})}</div>
                                         </div>
+                                            )}
+                                        </Draggable>
                                     </> :
                                     <>
                                         <div className="top-item-cont">
@@ -55,18 +61,20 @@ export const ChecklistItem = (props) => {
                                     {
                                         props.editMode ?
                                             <>
-                                                <div className="edit-checklist-container">
-                                                    <div className="top-item-cont">
-                                                        <button className="btn delete-check-btn" onClick={() => deleteChecklistItem(props.item)}> delete </button>
-                                                        <Checkbox
-                                                            checked={checked}
-                                                            onChange={handleChange}
-                                                            color="#996D70"
-                                                            inputProps={{ 'aria-label': 'primary checkbox' }}
-                                                        />
-                                                        <div className="edit-item-name">{props.item.checklist_item.toDo}</div>
+                                                <Draggable>
+                                                    <div className="edit-checklist-container">
+                                                        <div className="top-item-cont">
+                                                            <button className="btn delete-check-btn" onClick={() => deleteChecklistItem(props.item)}> delete </button>
+                                                            <Checkbox
+                                                                checked={checked}
+                                                                onChange={handleChange}
+                                                                color="#996D70"
+                                                                inputProps={{ 'aria-label': 'primary checkbox' }}
+                                                            />
+                                                            <div className="edit-item-name">{props.item.checklist_item.toDo}</div>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </Draggable>
                                             </>
                                             :
                                             <>
