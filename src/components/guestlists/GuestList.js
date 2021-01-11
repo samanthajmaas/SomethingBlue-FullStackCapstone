@@ -10,7 +10,7 @@ export const GuestList = (props) => {
 
     useEffect(() => {
         getGuests()
-    }, [])
+    }, [guests])
 
     const totalInvited = () => {
         const partyNumbers = []
@@ -24,11 +24,11 @@ export const GuestList = (props) => {
     }
 
     const totalAttending = () => {
-        const partyNumbers = []
+        const attendingNumbers = []
         const guestsWhoAttending = guests.filter(g => g.rsvp_status === "attending")
-        const mapped = partyNumbers.push(guestsWhoAttending.number_of_guests_in_party)
+        const mapped = guestsWhoAttending.map(attender => attendingNumbers.push(attender.number_of_guests_in_party))
         let sum = 0
-        for (let num of partyNumbers){
+        for (let num of attendingNumbers){
             sum = sum + num
         } 
         return sum
@@ -41,7 +41,7 @@ export const GuestList = (props) => {
                 <section className="guestList-right">
                     <h2 className="guestListTitle">Guest List</h2>
                     <div className="totalnumberOfGuests">
-                        {totalInvited()} total guests
+                        {totalInvited()} total guests : {totalAttending()} guests attending
                     </div>
                 </section>
                 <section className="guestList-left">
