@@ -10,7 +10,7 @@ export const GuestList = (props) => {
 
     useEffect(() => {
         getGuests()
-    }, [guests])
+    }, [])
 
     const totalInvited = () => {
         const partyNumbers = []

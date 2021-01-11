@@ -72,9 +72,9 @@ export const BudgetList = (props) => {
                     </div>
                 </section>
             </article>
-            {/* <article className="chart-cont">
-                <PieChart key={currentWedding.id} budgetItems={budgetItems} {...props} />
-            </article> */}
+            <article className="chart-cont">
+                <PieChart key={currentWedding.id} currentWedding={currentWedding} budgetItems={budgetItems} getBudgetItems={getBudgetItems} {...props} />
+            </article>
             {
                 addMode ?
                     <article className="items" style={{ marginTop: '20em' }}>

@@ -4,9 +4,12 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.2",
+    "@patternfly/react-charts": "^6.12.12",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.5.0",
+    "ag-grid-community": "^25.0.0",
+    "ag-grid-react": "^25.0.0",
     "bootstrap": "^4.5.3",
     "chart.js": "^2.9.4",
     "moment": "^2.29.1",

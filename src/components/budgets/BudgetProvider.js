@@ -49,7 +49,7 @@ export const BudgetProvider = (props) => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(item)
-        })
+        }) .then(getBudgetItems)
     }
 
     return (

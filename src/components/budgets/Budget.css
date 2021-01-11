@@ -85,3 +85,14 @@
     margin-top: 1.7em;
     margin-left: 1em;
 }
+
+.pieChart{
+    width: 400px !important ;
+    height: 300px !important;
+    margin-left: 15em;
+    padding-top: 2em;
+}
+
+.budgetTotal{
+    margin-left: 15em;
+}
