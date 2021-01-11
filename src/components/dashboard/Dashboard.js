@@ -32,9 +32,11 @@ export const Dashboard = (props) => {
 
     return (
         <>        
+        <div className="dash-top">
+            <h1 className="welcome"> Welcome, {currentBride.first_name}! </h1>
+        </div>
         <div className="dashboard-container">
             <div className="right-side">
-                <h1 className="welcome"> Welcome, {currentBride.first_name}! </h1>
                 <img className="image" style={{height: "20em"}} alt="" src={bride.profile_image_url}/>
                 <br></br>
                 <div className="weddingDate">{fixDate()}</div>
@@ -52,7 +54,12 @@ export const Dashboard = (props) => {
                         update event details
                     </span>
             </div>
-            <div>
+           
+            <div className="left-side">
+                <div className="countdown">{currentWedding.countdown} days until wedding</div>
+            </div>
+        </div>
+        <div>
                     {editMode
                         ? <EditWeddingForm
                             currentWedding={currentWedding}
@@ -61,21 +68,6 @@ export const Dashboard = (props) => {
                             {...props} />
                         : null}
             </div>
-            {/* <div className="left-side">
-                <Link to="/checklist"> Wedding Checklist</Link>
-                <br></br>
-                <Link to="/budget">Bugeter</Link>
-                <br></br>
-                <Link to="/guests">Guest List</Link>
-                <br></br>
-                <Link to="/visionboard">Vision Board</Link>
-                <br></br>
-                <Link className="logout" onClick={() => {
-                    localStorage.removeItem("blue_token")
-                    props.history.push("/login")}}
-                    >Logout</Link>
-            </div> */}
-        </div>
         </>
     )
 }

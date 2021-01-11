@@ -5,6 +5,7 @@ export const ChecklistContext = React.createContext()
 export const ChecklistProvider = (props) => {
 
     const [checklistItems, setChecklistItems] = useState([])
+    const [ searchTerms, setTerms ] = useState("")
 
 
     const getChecklistItems = () => {
@@ -38,6 +39,7 @@ export const ChecklistProvider = (props) => {
             body: JSON.stringify(item)
         })
         .then(res => res.json())
+        // .then(res=> checklistItems.unshift(res))
         .then(getChecklistItems)
     }
 
@@ -53,9 +55,10 @@ export const ChecklistProvider = (props) => {
     }
 
 
+
     return (
         <ChecklistContext.Provider value={{
-            checklistItems, getChecklistItems, deleteChecklistItem, addToDo, markCompleted
+            checklistItems, getChecklistItems, deleteChecklistItem, addToDo, markCompleted, searchTerms, setTerms
         }}>
             {props.children}
         </ChecklistContext.Provider>

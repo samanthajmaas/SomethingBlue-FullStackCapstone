@@ -26,7 +26,7 @@ export const  EditGuestForm= (props) => {
     }
 
     return (
-        <form className="form newGuestForm" id="newGuestForm">
+        <form className="form editGuestForm" id="editGuestForm">
             <div className="toprow">
                 <div className="toprowblank"></div>
                 <span className="x" onClick={()=>{

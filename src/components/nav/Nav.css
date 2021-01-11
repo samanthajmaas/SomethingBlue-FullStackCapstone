@@ -30,3 +30,10 @@
     cursor: pointer;
     display: flex;
 }
+
+#editWeddingForm{
+    width: 20em;
+    position: relative;
+    left: 40em;
+    margin-bottom: 5em;
+}

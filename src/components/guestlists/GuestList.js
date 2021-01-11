@@ -10,25 +10,57 @@ export const GuestList = (props) => {
 
     useEffect(() => {
         getGuests()
-    }, [])
+    }, [guests])
+
+    const totalInvited = () => {
+        const partyNumbers = []
+        const mapping = guests.map(g => 
+            partyNumbers.push(g.number_of_guests_in_party))
+        let sum = 0
+        for (let num of partyNumbers){
+            sum = sum + num
+        } 
+        return sum
+    }
+
+    const totalAttending = () => {
+        const attendingNumbers = []
+        const guestsWhoAttending = guests.filter(g => g.rsvp_status === "attending")
+        const mapped = guestsWhoAttending.map(attender => attendingNumbers.push(attender.number_of_guests_in_party))
+        let sum = 0
+        for (let num of attendingNumbers){
+            sum = sum + num
+        } 
+        return sum
+    }
 
     return (
         <>
-            <div className="guestlist-cont">
-                <section className="guests">
-                <h2>Guest List</h2>
-                <div className="number of guests">"NUMBER OF GUESTS"</div>
-                    <button className="addItem" onClick={() => {
+        <div className="guest-list-page">
+            <article className="guestlist-cont">
+                <section className="guestList-right">
+                    <h2 className="guestListTitle">Guest List</h2>
+                    <div className="totalnumberOfGuests">
+                        {totalInvited()} total guests : {totalAttending()} guests attending
+                    </div>
+                </section>
+                <section className="guestList-left">
+                    <button className="btn" onClick={() => {
                         setAddMode(true)
                     }}>add guests</button>
-                <div>
-                    {addMode
-                        ? <NewGuestForm
-                            setAddMode={setAddMode}
-                            {...props} />
-                    : null}
-                </div>
-                <div className="theguests">
+                    <div>
+                        {addMode
+                            ? <NewGuestForm
+                                setAddMode={setAddMode}
+                                {...props} />
+                        : 
+                        null}
+                    </div>
+                </section>
+                </article>
+                {addMode ?
+                <article className="bottom-section" style={{ marginTop: '30em' }}>
+                <section className="theguests">
                     {guests.map(g => {
                         return <Guest
                             key={g.id}
@@ -36,8 +68,30 @@ export const GuestList = (props) => {
                             {...props} />
                     })
                     }
-                </div>
                 </section>
+            </article>
+                :
+                <article className="bottom-section">
+                    <section className="lables">
+                        <div className="nameLable lable">Name</div>
+                        <div className="addressLable lable">Address</div>
+                        <div className="phoneLable lable">Phone Number</div>
+                        <div className="partyLable lable"># in party</div>
+                        <div className="rsvpLable lable">RSVP Status</div>
+                        <div className="update lable">Update List</div>
+                    </section>
+                    <section className="theguests">
+                        {guests.map(g => {
+                            return <Guest
+                                key={g.id}
+                                guest={g}
+                                {...props} />
+                        })
+                        }
+                    </section>
+                </article>
+                }
+                
             </div>
         </>
     )

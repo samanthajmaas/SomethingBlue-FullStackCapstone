@@ -76,6 +76,8 @@
     top: 20em;
     background: white !important;
     border-radius: 10px;
+    width: 20em;
+    right: 25em;
 }
 
 .delete-btn{
