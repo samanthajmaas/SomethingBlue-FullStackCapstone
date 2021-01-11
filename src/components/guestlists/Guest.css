@@ -23,20 +23,29 @@
     font-size: 40px;
 }
 
-.numberOfGuests{
+.totalnumberOfGuests{
     font-size:1.2em;
 }
 
 .cancel-new-guest{
     position: relative;
-    left: 20em;
+    left: 35em;
 }
 #newGuestForm{
     position: absolute;
     top: 20em;
+    right: 20em;
     background: white !important;
     border-radius: 10px;
-    width: 20em;
+    width: 60em;
+}
+
+#editGuestForm{
+    position: relative;
+    left: 35em;
+    background: white !important;
+    border-radius: 10px;
+    width: 50em;
 }
 #first_name::placeholder{
     text-align: center !important;
@@ -72,18 +81,18 @@
     position: relative;
     top: .2em;
     left: 1em;
-    width: 10em;  
+    width: 15em;  
 }
 
 .guest{
     display: flex;
     justify-content: space-between;
-    margin-left:15%; 
+    margin-left:10%; 
     margin-top: 2%; 
     background: #FFFFFF;
     border: 1px solid #000000;
     box-sizing: border-box;
-    margin-right: 20em;
+    margin-right: 10em;
     text-align: center;
     padding: 2em;
     font-size:1.2em;
@@ -96,4 +105,51 @@
 .edit-guest-bnt{
     position: relative;
     left: 4em;
+}
+
+.lables{
+    display: flex;
+    justify-content: space-between;
+    margin-left:10%; 
+    margin-top: 2%; 
+    background: #FFFFFF;
+    border-bottom: 1px solid #000000;
+    box-sizing: border-box;
+    margin-right: 10em;
+    text-align: center;
+    padding-left: 4em;
+    padding-right: 4em;
+    font-size:1.2em;
+}
+
+.addressLable{
+    margin-left: 8em;
+}
+
+.phoneLable{
+    margin-left: 7em;
+}
+
+.rsvpLable{
+    margin-right: 5em;
+}
+
+.guest-name{
+    width: 8em;
+}
+
+.address{
+    width: 15em;
+}
+
+.phone{
+    width: 5em;
+}
+
+.numberOfGuests{
+    width: 3em;
+}
+
+.rsvp{
+    width: 5em;
 }

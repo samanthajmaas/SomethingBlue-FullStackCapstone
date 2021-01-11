@@ -10,7 +10,6 @@ export const Guest = (props) => {
         <>
             <section className="guest">
                 <>
-                    
                     <div className="guest-name">{props.guest.guest_first_name} {props.guest.guest_last_name}</div>
                     <div className="address">{props.guest.address}</div>
                     <div className="phone">{props.guest.phone_number}</div>
@@ -18,13 +17,14 @@ export const Guest = (props) => {
                     <div className="rsvp">{props.guest.rsvp_status}</div>
                     <button className="btn guest-btn edit-guest-bnt" onClick={() => setEditMode(true)}>edit</button>
                     <button className="btn guest-btn" onClick={() => deleteGuest(props.guest)}>delete</button>
-                    {editMode ? 
-                    <EditGuestForm key={props.guest.id} guest={props.guest} setEditMode={setEditMode} {...props}/>
-                    :
-                    null
-                    }
                 </>
             </section>
+                {editMode ?
+                    <EditGuestForm key={props.guest.id} guest={props.guest} setEditMode={setEditMode} {...props} />
+                    :
+                    null
+                }
+
         </>
     )
 }

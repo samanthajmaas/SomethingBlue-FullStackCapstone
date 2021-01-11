@@ -8,17 +8,22 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 export const Checklist = (props) => {
     const { checklistItems, getChecklistItems, searchTerms, setTerms } = useContext(ChecklistContext)
-    const { currentWedding } = useContext(WeddingContext)
+    const { currentWedding, getCurrentWedding } = useContext(WeddingContext)
     const [addMode, setAddMode] = useState(false)
     const [editMode, setEditMode] = useState(false)
     const [changed, setChanged] = useState(true)
     const [filteredChecklist, setFiltered] = useState([])
+    const [items, updateItemsArr] = useState([])
     const toggleChange = () => (changed ? setChanged(false) : setChanged(true))
 
     useEffect(() => {
         const weddingId = parseInt(props.match.params.weddingId)
         getChecklistItems(weddingId)
     }, [changed])
+
+    useEffect(() => {
+        getCurrentWedding()
+    }, [])
 
     useEffect(() => {
         if (searchTerms !== "") {
@@ -30,15 +35,6 @@ export const Checklist = (props) => {
         )
     }, [searchTerms, checklistItems])
 
-    const daysLeft = () => {
-        const weddingDate = currentWedding.event_date
-        const day = new Date().getDate()
-        const month = new Date().getMonth() + 1
-        const year = new Date().getFullYear()
-
-        const today = [month, day, year, " ", weddingDate]
-        return today
-    }
 
     const progress = () => {
         const findingProgress = checklistItems.filter(ci => ci.completed_date !== null)
@@ -46,13 +42,22 @@ export const Checklist = (props) => {
         return currentProgress
     }
 
+    const handleOnDragEnd = (result) => {
+
+        const newItemsArray = Array.from(items)
+        const [reorderedItemsArr] = newItemsArray.splice(result.source.index, 1);
+        newItemsArray.splice(result.destination.index, 0, reorderedItemsArr);
+        updateItemsArr(newItemsArray)
+    }
+
+    
     return (
         <>
-            <DragDropContext>
+            <DragDropContext onDragEnd={handleOnDragEnd}>
                 <article className="checklist-list-cont">
                     <div className="checklistitems-right">
                         <h2 className="checklist-title">Your Wedding Checklist</h2>
-                        <div className="countdown"> {daysLeft()} Days Left!</div>
+                        <div className="countdown"> {currentWedding.countdown} Days Left!</div>
                     </div>
 
                     <div className="checlist-items-left">
@@ -112,9 +117,11 @@ export const Checklist = (props) => {
                         </div>
                         :
                         <Droppable
-                            droppableId={currentWedding.id}>
+                            droppableId="dropId">
                             {(provided) => (
-                                <div className="items" {...provided.droppableProps} ref={provided.innerRef}>
+                                <div className="items" 
+                                {...provided.droppableProps} ref={provided.innerRef}
+                                >
                                     {checklistItems.map((c, index) => {
                                         return <ChecklistItem
                                             key={c.id}
@@ -129,7 +136,6 @@ export const Checklist = (props) => {
                                     {provided.placeholder}
                                 </div>
                             )}
-
                         </Droppable>
                     }
                 </article>

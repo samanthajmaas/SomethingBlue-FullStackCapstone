@@ -39,6 +39,7 @@ export const ChecklistProvider = (props) => {
             body: JSON.stringify(item)
         })
         .then(res => res.json())
+        // .then(res=> checklistItems.unshift(res))
         .then(getChecklistItems)
     }
 
@@ -52,6 +53,7 @@ export const ChecklistProvider = (props) => {
         })
             .then(getChecklistItems)
     }
+
 
 
     return (

@@ -3,9 +3,12 @@ import { BudgetItem } from "./BudgetItem"
 import { BudgetContext } from "./BudgetProvider"
 import { AddNewSaveFor } from "./NewBudgetItemForm"
 import "./Budget.css"
+import { PieChart } from "./PieChart"
+import { WeddingContext } from "../weddings/WeddingProvider"
 
 export const BudgetList = (props) => {
     const { budgetItems, getBudgetItems, searchTerms, setTerms } = useContext(BudgetContext)
+    const { currentWedding, getCurrentWedding } = useContext(WeddingContext)
     const [addMode, setAddMode] = useState(false)
     const [editMode, setEditMode] = useState(false)
     const [changed, setChanged] = useState(true)
@@ -15,6 +18,10 @@ export const BudgetList = (props) => {
     useEffect(() => {
         const weddingId = parseInt(props.match.params.weddingId)
         getBudgetItems(weddingId)
+    }, [])
+
+    useEffect(() => {
+        getCurrentWedding()
     }, [])
 
     useEffect(() => {
@@ -65,6 +72,9 @@ export const BudgetList = (props) => {
                     </div>
                 </section>
             </article>
+            {/* <article className="chart-cont">
+                <PieChart key={currentWedding.id} budgetItems={budgetItems} {...props} />
+            </article> */}
             {
                 addMode ?
                     <article className="items" style={{ marginTop: '20em' }}>

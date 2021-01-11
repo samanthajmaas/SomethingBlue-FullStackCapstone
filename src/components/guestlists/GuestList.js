@@ -32,7 +32,6 @@ export const GuestList = (props) => {
             sum = sum + num
         } 
         return sum
-        
     }
 
     return (
@@ -41,8 +40,8 @@ export const GuestList = (props) => {
             <article className="guestlist-cont">
                 <section className="guestList-right">
                     <h2 className="guestListTitle">Guest List</h2>
-                    <div className="numberOfGuests">
-                        {totalInvited()} guests invited : {totalAttending()} guests attending
+                    <div className="totalnumberOfGuests">
+                        {totalInvited()} total guests
                     </div>
                 </section>
                 <section className="guestList-left">
@@ -54,10 +53,13 @@ export const GuestList = (props) => {
                             ? <NewGuestForm
                                 setAddMode={setAddMode}
                                 {...props} />
-                        : null}
+                        : 
+                        null}
                     </div>
                 </section>
                 </article>
+                {addMode ?
+                <article className="bottom-section" style={{ marginTop: '30em' }}>
                 <section className="theguests">
                     {guests.map(g => {
                         return <Guest
@@ -67,6 +69,29 @@ export const GuestList = (props) => {
                     })
                     }
                 </section>
+            </article>
+                :
+                <article className="bottom-section">
+                    <section className="lables">
+                        <div className="nameLable lable">Name</div>
+                        <div className="addressLable lable">Address</div>
+                        <div className="phoneLable lable">Phone Number</div>
+                        <div className="partyLable lable"># in party</div>
+                        <div className="rsvpLable lable">RSVP Status</div>
+                        <div className="update lable">Update List</div>
+                    </section>
+                    <section className="theguests">
+                        {guests.map(g => {
+                            return <Guest
+                                key={g.id}
+                                guest={g}
+                                {...props} />
+                        })
+                        }
+                    </section>
+                </article>
+                }
+                
             </div>
         </>
     )

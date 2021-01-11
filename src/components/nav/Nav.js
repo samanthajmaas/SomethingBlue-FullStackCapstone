@@ -19,30 +19,30 @@ export const Nav = (props) => {
         <>
             <div className="nav">
                 <Link
-                    className="btn nav__btn"
+                    className=" nav__btn"
                     onClick={() => props.history.push("/checklist")}>
                     Checklist
                             </Link>
                 <Link
                     title="Review My Posts"
-                    className="btn nav__btn"
+                    className="nav__btn"
                     onClick={() => props.history.push(`/budget`)}>
                     Budgeter
                             </Link>
 
                 <Link
-                    className="btn nav__btn guests"
+                    className=" nav__btn guests"
                     onClick={() => props.history.push("/guests")}>
                     Guest List
                             </Link>
 
                 <Link
-                    className="btn nav__btn user-manager"
+                    className=" nav__btn user-manager"
                     onClick={() => props.history.push(`/visionboard`)}>
                     Vision Board
                             </Link>
                 <Link
-                    className="btn nav__btn"
+                    className="nav__btn"
                     onClick={() => {
                         localStorage.removeItem("blue_token")
                         props.history.push("/login")

@@ -23,11 +23,13 @@ export const ChecklistItem = (props) => {
                             <>
                                 {props.editMode ?
                                     <>
-                                        <Draggable key={props.item.id} draggableId={props.item.id} index={props.index}>
+                                        <Draggable key={props.item.id} draggableId={props.item.checklist_item.toDo} index={props.index}>
                                             {(provided)=> (
-                                            <div className="edit-checklist-container" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                                            <div className="edit-checklist-container"
+                                             {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}
+                                             >
                                             <div className="top-item-cont">
-                                                <button className="btn delete-check-btn" onClick={() => props.deleteChecklistItem(props.item)}> delete </button>
+                                                <button className="btn delete-check-btn" onClick={() => deleteChecklistItem(props.item)}> delete </button>
                                                 <Checkbox
                                                     checked="true"
                                                     onChange={props.handleChange}
@@ -61,8 +63,11 @@ export const ChecklistItem = (props) => {
                                     {
                                         props.editMode ?
                                             <>
-                                                <Draggable>
-                                                    <div className="edit-checklist-container">
+                                                <Draggable key={props.item.id} draggableId={props.item.checklist_item.toDo} index={props.index}>
+                                                {(provided)=> (
+                                                    <div className="edit-checklist-container"
+                                                    {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}
+                                                    >
                                                         <div className="top-item-cont">
                                                             <button className="btn delete-check-btn" onClick={() => deleteChecklistItem(props.item)}> delete </button>
                                                             <Checkbox
@@ -74,6 +79,7 @@ export const ChecklistItem = (props) => {
                                                             <div className="edit-item-name">{props.item.checklist_item.toDo}</div>
                                                         </div>
                                                     </div>
+                                                    )}
                                                 </Draggable>
                                             </>
                                             :
