@@ -37,3 +37,5 @@ npm i --save chart.js
 
 ```
 
+5. Run npm start 
+
