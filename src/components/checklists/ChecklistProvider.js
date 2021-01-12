@@ -39,7 +39,6 @@ export const ChecklistProvider = (props) => {
             body: JSON.stringify(item)
         })
         .then(res => res.json())
-        // .then(res=> checklistItems.unshift(res))
         .then(getChecklistItems)
     }
 
@@ -54,11 +53,21 @@ export const ChecklistProvider = (props) => {
             .then(getChecklistItems)
     }
 
+    const updateList = (item) => {
+        return fetch(`http://localhost:8000/checklist/updateList`, {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("blue_token")}`,
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(setChecklistItems)
+    }
 
 
     return (
         <ChecklistContext.Provider value={{
-            checklistItems, getChecklistItems, deleteChecklistItem, addToDo, markCompleted, searchTerms, setTerms
+            checklistItems, getChecklistItems, deleteChecklistItem, addToDo, markCompleted, searchTerms, setTerms, updateList 
         }}>
             {props.children}
         </ChecklistContext.Provider>

@@ -16,8 +16,7 @@ export const BudgetList = (props) => {
     const toggleChange = () => (changed ? setChanged(false) : setChanged(true))
 
     useEffect(() => {
-        const weddingId = parseInt(props.match.params.weddingId)
-        getBudgetItems(weddingId)
+        getBudgetItems()
     }, [])
 
     useEffect(() => {

@@ -32,7 +32,7 @@ export const ChecklistItem = (props) => {
                                                 <button className="btn delete-check-btn" onClick={() => deleteChecklistItem(props.item)}> delete </button>
                                                 <Checkbox
                                                     checked="true"
-                                                    onChange={props.handleChange}
+                                                    onChange={handleChange}
                                                     color="#996D70"
                                                     inputProps={{ 'aria-label': 'primary checkbox' }}
                                                 />

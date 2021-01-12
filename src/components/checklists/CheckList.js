@@ -7,23 +7,26 @@ import { WeddingContext } from "../weddings/WeddingProvider"
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 export const Checklist = (props) => {
-    const { checklistItems, getChecklistItems, searchTerms, setTerms } = useContext(ChecklistContext)
+    const { checklistItems, getChecklistItems, searchTerms, setTerms, updateList } = useContext(ChecklistContext)
     const { currentWedding, getCurrentWedding } = useContext(WeddingContext)
     const [addMode, setAddMode] = useState(false)
     const [editMode, setEditMode] = useState(false)
     const [changed, setChanged] = useState(true)
     const [filteredChecklist, setFiltered] = useState([])
-    const [items, updateItemsArr] = useState([])
+    const [items, updateItemsArr] = useState(checklistItems)
     const toggleChange = () => (changed ? setChanged(false) : setChanged(true))
 
     useEffect(() => {
-        const weddingId = parseInt(props.match.params.weddingId)
-        getChecklistItems(weddingId)
+        getChecklistItems()
     }, [changed])
 
     useEffect(() => {
         getCurrentWedding()
     }, [])
+
+    useEffect(() => {
+
+    }, [items])
 
     useEffect(() => {
         if (searchTerms !== "") {
@@ -43,11 +46,13 @@ export const Checklist = (props) => {
     }
 
     const handleOnDragEnd = (result) => {
-
         const newItemsArray = Array.from(items)
         const [reorderedItemsArr] = newItemsArray.splice(result.source.index, 1);
         newItemsArray.splice(result.destination.index, 0, reorderedItemsArr);
         updateItemsArr(newItemsArray)
+
+        const draggedItem = checklistItems.find(c => c.checklist_item.toDo === result.draggableId)
+        updateList(draggedItem)
     }
 
     

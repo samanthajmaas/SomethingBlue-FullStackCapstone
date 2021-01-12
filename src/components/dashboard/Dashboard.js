@@ -1,13 +1,15 @@
 import React, {useEffect, useContext, useState } from "react"
 import "./Dashboard.css"
 import { BrideContext } from "../brides/BrideProvider"
-import { Link } from "react-router-dom"
 import { WeddingContext } from "../weddings/WeddingProvider"
 import { EditWeddingForm } from "../weddings/EditWeddingForm"
+import { PieChart } from "../budgets/PieChart"
+import { BudgetContext } from "../budgets/BudgetProvider"
 
 export const Dashboard = (props) => {
     const {currentBride, getCurrentBride, getSingleBride, bride} = useContext(BrideContext)
     const {currentWedding, getCurrentWedding} = useContext(WeddingContext)
+    const {budgetItems, getBudgetItems} = useContext(BudgetContext)
     const [editMode, setEditMode] = useState(false)
     const [changed, setChanged] = useState(true)
     const toggleChange = () => (changed ? setChanged(false) : setChanged(true))
@@ -57,6 +59,11 @@ export const Dashboard = (props) => {
            
             <div className="left-side">
                 <div className="countdown">{currentWedding.countdown} days until wedding</div>
+                {/* <div><PieChart
+                budgetItems= {budgetItems}
+                getBudgetItems= {getBudgetItems}
+                currentWedding = {currentWedding}
+                /></div> */}
             </div>
         </div>
         <div>

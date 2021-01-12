@@ -24,22 +24,24 @@ export const ApplicationViews = (props) => {
                 }}
                 src={Logo} />
             <Nav {...props} />
-            <BrideProvider>
-                <WeddingProvider>
-                    <Route exact path="/dashboard" render={
-                        props => <Dashboard {...props} />
-                    } />
-                </WeddingProvider>
-            </BrideProvider>
-
-            
-                <WeddingProvider>
-                    <ChecklistProvider>
-                        <Route exact path="/checklist" render={
-                            props => <Checklist {...props} />
+            <BudgetProvider>
+                <BrideProvider>
+                    <WeddingProvider>
+                        <Route exact path="/dashboard" render={
+                            props => <Dashboard {...props} />
                         } />
-                    </ChecklistProvider>
-                </WeddingProvider>
+                    </WeddingProvider>
+                </BrideProvider>
+            </BudgetProvider>
+
+
+            <WeddingProvider>
+                <ChecklistProvider>
+                    <Route exact path="/checklist" render={
+                        props => <Checklist {...props} />
+                    } />
+                </ChecklistProvider>
+            </WeddingProvider>
 
 
             <WeddingProvider>
