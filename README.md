@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# Welcome to Something Blue
+>let's plan a wedding together!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+###### The Inspiration
 
-## Available Scripts
+Something Blue was inspired by my time working at David's Bridal as a bridal stylist. While helping brides find their dream wedding dresses, I witnessed the struggle that most brides face of feeling overwhelmed by the whole wedding planning process and how much there is to keep track of. To help users tackle the process, Something Blue provides all the appropriate tools in one place! 
 
-In the project directory, you can run:
+###### Features 
+<ins>Checklist</ins>
+The main headache of any planning process is the never-ending list of things to do. This feature provides a pre-made list to every bride upon registration to help ease the stress of what needs to be done while also being completely customizable to fit the needs of every wedding! As things get done on the list, users can simply checkmark a box, see what date that task was completed, and clearly view a progress bar to ensure everything gets completed in a timely manner! 
 
-### `npm start`
+<ins>Budgeter</ins>
+Maybe the most upsetting part of planning any wedding, the Budgeter makes planning out a budget stress-free. Similar to the checklist, each bride is given a pre-made list of things commonly needed to budget for when planning while still being customizable. This feature also gives users a clear visual of how much of their total budget they have spent and how much is left! 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<ins>Guest List</ins>
+The most straightforward feature, allowing the user to manage their guest list with important information, such as addresses and phone numbers. Also, keeps a running total of how many people invited to your wedding as well as a total of those who have accepted, to make planning for food and favors that much easier!
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<ins>Vision Board</ins>
+And finally, the feature to keep everything in one place, the Vision Board. Users can upload any pictures to this space that they want to refer back to as inspiration. Inspired by Pinterest but without the mess of home decor and future baby names, users can just focus this space on wedding stuff!
 
-### `npm test`
+###### Video Demo Link
+https://www.youtube.com/watch?v=-ByVEcmwCmA
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+###### Setup 
 
-### `npm run build`
+1. Go do server side repo [here](https://github.com/samanthajmaas/SomethingBlueAPI) and follow instructions.
+2. Clone this repository
+3. cd into the directory
+4.Install necessary packages and dependencies:
+```
+npm install
+npm i --save react react-dom react-router-dom reactstrap
+npm i --save bootstrap
+npm i --save react-beautiful-dnd
+npm i --save react-chartjs-2
+npm i --save chart.js
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
