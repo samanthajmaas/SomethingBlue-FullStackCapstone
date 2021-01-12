@@ -26,6 +26,7 @@ https://www.youtube.com/watch?v=-ByVEcmwCmA
 1. Go do server side repo [here](https://github.com/samanthajmaas/SomethingBlueAPI) and follow instructions.
 2. Clone this repository
 3. cd into the directory
+
 4.Install necessary packages and dependencies:
 ```
 npm install
